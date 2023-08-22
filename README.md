@@ -1,1 +1,1 @@
-# Node.js_2023_Summer
+# Node.js Course KEA - Lindinger
