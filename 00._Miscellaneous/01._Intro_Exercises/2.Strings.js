@@ -44,7 +44,7 @@ const letters = "abc";
 
 // Get me the character "c"
 
-const charC = letters.indexOf('c');
+const charC = letters.charAt(2);
 
 console.log(charC);
 
