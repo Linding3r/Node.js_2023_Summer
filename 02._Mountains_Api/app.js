@@ -1,7 +1,99 @@
 const express = require("express");
 const app = express();
 
+// added mountain.json with 80 mountains around the world
 const mountainsJson = require("./mountains.json");
+
+// added this as I missed the exercise point stating: Don’t work with database or use a persistence layer
+// Though showing how I would have done it without persitence layer
+/*const mountainsJson = [
+    {
+        "id": 1,
+        "name": "Mount Everest",
+        "height": 8848,
+        "countries": [
+            "Nepal",
+            "China"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "K2",
+        "height": 8611,
+        "countries": [
+            "Pakistan",
+            "China"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Kangchenjunga",
+        "height": 8586,
+        "countries": [
+            "Nepal",
+            "India"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Lhotse",
+        "height": 8516,
+        "countries": [
+            "Nepal",
+            "China"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Makalu",
+        "height": 8485,
+        "countries": [
+            "Nepal",
+            "China"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Cho Oyu",
+        "height": 8188,
+        "countries": [
+            "Nepal",
+            "China"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Dhaulagiri",
+        "height": 8167,
+        "countries": [
+            "Nepal"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Manaslu",
+        "height": 8163,
+        "countries": [
+            "Nepal"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "Nanga Parbat",
+        "height": 8126,
+        "countries": [
+            "Pakistan"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Annapurna",
+        "height": 8091,
+        "countries": [
+            "Nepal"
+        ]
+    }
+];*/
 
 app.get("/", (req, res) => {
     res.send(mountainsJson);
