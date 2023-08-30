@@ -164,9 +164,9 @@ app.get("/tallest-in-country/:country", (req, res) => {
     if(tallestMountain){
         res.send(tallestMountain);
     } else {
-        res.status(404).send("No mountains found in specified country")
+        res.status(404).send("No mountains found in specified country");
     }
-})
+});
 
 
 app.listen(8080);
