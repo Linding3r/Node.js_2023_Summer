@@ -95,6 +95,10 @@ const mountainsJson = require('./mountains.json');
     }
 ];*/
 
+app.get('/', (req, res) => {
+    res.send('Mountain API running 🥳')
+})
+
 app.get('/mountains', (req, res) => {
     res.send({ data: mountainsJson });
 });
@@ -111,7 +115,7 @@ app.get('/mountains/:id', (req, res) => {
 });
 
 app.get('/by-country/:country', (req, res) => {
-    const reqCountry = req.params.country.toLowerCase;
+    const reqCountry = req.params.country.charAt(0).toUpperCase() + req.params.country.slice(1).toLowerCase();
     const mountains = mountainsJson.filter(mountain => mountain.countries.includes(reqCountry));
 
     if (mountains.length > 0) {
@@ -155,7 +159,7 @@ app.get('/countries/:amount', (req, res) => {
 });
 
 app.get('/tallest-in-country/:country', (req, res) => {
-    const country = req.params.country;
+    const country = req.params.country.charAt(0).toUpperCase() + req.params.country.slice(1).toLowerCase();
     const mountainsByReqCountry = mountainsJson.filter(mountain => mountain.countries.includes(country));
     let tallestMountain;
 
@@ -182,8 +186,9 @@ app.post('/mountain', (req, res) => {
 
 
 
-
-const PORT = 4000;
+// PORT 4000 for deployement
+//const PORT = 4000;
+const PORT = 8080;
 
 // error will return a "stacktrace" if there is an error, if no error it's "undefined"
 app.listen(PORT, error => {
@@ -194,4 +199,5 @@ app.listen(PORT, error => {
     console.log('Server is running on port', PORT);
 });
 
-module.exports = app;
+// Use this when deploying!
+// module.exports = app;
