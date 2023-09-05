@@ -1,0 +1,9 @@
+
+
+
+https://www.google.com/search?client=firefox-b-d&q=test
+
+protocol    subdomain    domain    tld(top-level domain)    endpoint       query String      
+https://    www.         google           .com              /search     ?client=firefox-b-d&=test
+
+

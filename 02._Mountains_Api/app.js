@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 
 // added mountain.json with 80 mountains around the world
-const mountainsJson = require("./mountains.json");
+const mountainsJson = require('./mountains.json');
 
 // added this as I missed the exercise point stating: Don’t work with database or use a persistence layer
 // Though showing how I would have done it without persitence layer
@@ -95,78 +95,103 @@ const mountainsJson = require("./mountains.json");
     }
 ];*/
 
-app.get("/", (req, res) => {
-    res.send(mountainsJson);
+app.get('/mountains', (req, res) => {
+    res.send({ data: mountainsJson });
 });
 
-app.get("/:id", (req, res) => {
+app.get('/mountains/:id', (req, res) => {
     const reqId = parseInt(req.params.id);
     const mountain = mountainsJson.find(mountain => mountain.id === reqId);
 
-    res.send(mountain);
+    if (mountain) {
+        res.send({ data: mountain });
+    } else {
+        res.status(404).send(`No mountains found with id: ${req.params.id}`);
+    }
 });
 
-app.get("/by-country/:country", (req, res) => {
+app.get('/by-country/:country', (req, res) => {
     const reqCountry = req.params.country.toLowerCase;
     const mountains = mountainsJson.filter(mountain => mountain.countries.includes(reqCountry));
 
     if (mountains.length > 0) {
-        res.send(mountains);
+        res.send({ data: mountains });
     } else {
-        res.status(404).send("No mountains found in the specified country.");
+        res.status(404).send('No mountains found in the specified country.');
     }
 });
 
-app.get("/above-height/:height", (req, res) => {
+app.get('/above-height/:height', (req, res) => {
     const height = req.params.height;
     const mountains = mountainsJson.filter(mountain => mountain.height > height);
 
-    if(mountains.length > 0) {
-        res.send(mountains);
+    if (mountains.length > 0) {
+        res.send({ data: mountains });
     } else {
-        res.status(404).send("No mountains found above the specified height.");
+        res.status(404).send('No mountains found above the specified height.');
     }
 });
 
-app.get("/under-height/:height", (req, res) => {
+app.get('/under-height/:height', (req, res) => {
     const height = req.params.height;
     const mountains = mountainsJson.filter(mountain => mountain.height < height);
 
-    if(mountains.length > 0) {
-        res.send(mountains);
+    if (mountains.length > 0) {
+        res.send({ data: mountains });
     } else {
-        res.status(404).send("No mountains found under the specified height.");
+        res.status(404).send('No mountains found under the specified height.');
     }
 });
 
-app.get("/countries/:amount", (req, res) => {
+app.get('/countries/:amount', (req, res) => {
     const amount = parseInt(req.params.amount);
     const mountains = mountainsJson.filter(mountain => mountain.countries.length === amount);
 
-    if(mountains.length > 0) {
-        res.send(mountains);
+    if (mountains.length > 0) {
+        res.send({ data: mountains });
     } else {
-        res.status(404).send("No mountains with that amount of countries.");
+        res.status(404).send('No mountains with that amount of countries.');
     }
 });
 
-app.get("/tallest-in-country/:country", (req, res) => {
+app.get('/tallest-in-country/:country', (req, res) => {
     const country = req.params.country;
     const mountainsByReqCountry = mountainsJson.filter(mountain => mountain.countries.includes(country));
     let tallestMountain;
 
-    for (const mountain of mountainsByReqCountry){
-        if(!tallestMountain || mountain.height > tallestMountain.height){
+    for (const mountain of mountainsByReqCountry) {
+        if (!tallestMountain || mountain.height > tallestMountain.height) {
             tallestMountain = mountain;
         }
     }
 
-    if(tallestMountain){
-        res.send(tallestMountain);
+    if (tallestMountain) {
+        res.send({ data: tallestMountain });
     } else {
-        res.status(404).send("No mountains found in specified country");
+        res.status(404).send('No mountains found in specified country');
     }
 });
 
 
-app.listen(8080);
+app.post('/mountain', (req, res) => {
+    
+})
+
+
+
+
+
+
+
+const PORT = 4000;
+
+// error will return a "stacktrace" if there is an error, if no error it's "undefined"
+app.listen(PORT, error => {
+    if (error) {
+        console.log('Error starting the server', error);
+        return;
+    }
+    console.log('Server is running on port', PORT);
+});
+
+module.exports = app;
