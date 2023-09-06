@@ -25,12 +25,22 @@ const mountainSchema = {
 // Compile the schema
 const validate = ajv.compile(mountainSchema);
 
-function formatReq(s){
-    
+function formatReqString(str) {
+    const words = str.split(' ');
+    const capitalizedWords = words.map(word => {
+        if (word.length === 0) {
+            return word;
+        }
+        const firstChar = word.charAt(0).toUpperCase();
+        const restOfString = word.slice(1).toLowerCase();
+        return firstChar + restOfString;
+    });
+
+    return capitalizedWords.join(' ');
 }
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname +'/index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/mountains', (req, res) => {
@@ -49,7 +59,7 @@ app.get('/mountains/:id', (req, res) => {
 });
 
 app.get('/by-country/:country', (req, res) => {
-    const reqCountry = req.params.country.charAt(0).toUpperCase() + req.params.country.slice(1).toLowerCase();
+    const reqCountry = formatReqString(req.params.country);
     const mountains = mountainsJson.filter(mountain => mountain.countries.includes(reqCountry));
 
     if (mountains.length > 0) {
@@ -93,7 +103,7 @@ app.get('/countries/:amount', (req, res) => {
 });
 
 app.get('/tallest-in-country/:country', (req, res) => {
-    const country = req.params.country.charAt(0).toUpperCase() + req.params.country.slice(1).toLowerCase();
+    const country = formatReqString(req.params.country);
     const mountainsByReqCountry = mountainsJson.filter(mountain => mountain.countries.includes(country));
     let tallestMountain;
 
@@ -122,6 +132,22 @@ app.post('/mountains', (req, res) => {
     }
 });
 
+app.patch('/mountains/:id', (req, res) => {
+    const reqId = Number(req.params.id);
+    const editedMountain = req.body;
+    const mountainIndex = mountainsJson.findIndex(mountain => mountain.id === reqId);
+
+    if (mountainIndex === -1) {
+        res.status(404).send(`No mountains found with id: ${reqId}`)
+    } else if(!validate(editedMountain)) {
+        res.status(400).json({ error: 'Invalid request body format' });
+    } else {
+        editedMountain.id = reqId
+        mountainsJson[mountainIndex] = editedMountain;
+        res.send(req.body);
+    }
+});
+
 app.delete('/mountains/:id', (req, res) => {
     const reqId = Number(req.params.id);
     const mountainIndex = mountainsJson.findIndex(mountain => mountain.id === reqId);
@@ -129,14 +155,14 @@ app.delete('/mountains/:id', (req, res) => {
     if (mountainIndex !== -1) {
         mountainsJson.splice(mountainIndex, 1);
         res.status(204).send();
-        console.log('Successfully deleted mountain with ID:',reqId)
+        console.log('Successfully deleted mountain with id:', reqId);
     } else {
-        res.status(404).json({ error: `No mountain found with id: ${reqId}`});
+        res.status(404).json({ error: `No mountain found with id: ${reqId}` });
     }
 });
 
 app.delete('/by-name/:name', (req, res) => {
-    const reqName = req.params.name;
+    const reqName = formatWord(req.params.name);
     const mountainIndex = mountainsJson.findIndex(mountain => mountain.name === reqName);
 
     if (mountainIndex !== -1) {
@@ -144,13 +170,13 @@ app.delete('/by-name/:name', (req, res) => {
         res.status(204).send();
         console.log('Successfully deleted mountain');
     } else {
-        res.status(404).json({ error: `No mountain found found by the name: ${reqName}`});
+        res.status(404).json({ error: `No mountain found found by the name: ${reqName}` });
     }
-})
+});
 
 // PORT 4000 for deployement
-const PORT = 4000;
-//const PORT = 8080;
+//const PORT = 4000;
+const PORT = 8080;
 
 // error will return a "stacktrace" if there is an error, if no error it's "undefined"
 app.listen(PORT, error => {
