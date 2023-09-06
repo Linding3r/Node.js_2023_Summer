@@ -25,8 +25,12 @@ const mountainSchema = {
 // Compile the schema
 const validate = ajv.compile(mountainSchema);
 
+function formatReq(s){
+    
+}
+
 app.get('/', (req, res) => {
-    res.send('Mountain API running 🥳');
+    res.sendFile(__dirname +'/index.html');
 });
 
 app.get('/mountains', (req, res) => {
@@ -127,9 +131,22 @@ app.delete('/mountains/:id', (req, res) => {
         res.status(204).send();
         console.log('Successfully deleted mountain with ID:',reqId)
     } else {
-        res.status(404).json({ error: 'No mountain found with id:', reqId });
+        res.status(404).json({ error: `No mountain found with id: ${reqId}`});
     }
 });
+
+app.delete('/by-name/:name', (req, res) => {
+    const reqName = req.params.name;
+    const mountainIndex = mountainsJson.findIndex(mountain => mountain.name === reqName);
+
+    if (mountainIndex !== -1) {
+        mountainsJson.splice(mountainIndex, 1);
+        res.status(204).send();
+        console.log('Successfully deleted mountain');
+    } else {
+        res.status(404).json({ error: `No mountain found found by the name: ${reqName}`});
+    }
+})
 
 // PORT 4000 for deployement
 const PORT = 4000;
