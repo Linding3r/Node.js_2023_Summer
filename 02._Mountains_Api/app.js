@@ -191,8 +191,8 @@ app.delete('/by-name/:name', (req, res) => {
 });
 
 // PORT 4000 for deployement
-//const PORT = 4000;
-const PORT = 8080;
+const PORT = 4000;
+//const PORT = 8080;
 
 // error will return a "stacktrace" if there is an error, if no error it's "undefined"
 app.listen(PORT, error => {
