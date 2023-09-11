@@ -138,13 +138,29 @@ app.patch('/mountains/:id', (req, res) => {
     const mountainIndex = mountainsJson.findIndex(mountain => mountain.id === reqId);
 
     if (mountainIndex === -1) {
-        res.status(404).send(`No mountains found with id: ${reqId}`)
-    } else if(!validate(editedMountain)) {
+        res.status(404).send(`No mountains found with id: ${reqId}`);
+    } else if (!validate(editedMountain)) {
         res.status(400).json({ error: 'Invalid request body format' });
     } else {
-        editedMountain.id = reqId
+        editedMountain.id = reqId;
         mountainsJson[mountainIndex] = editedMountain;
         res.send(req.body);
+    }
+});
+
+app.put('/mountains/:id', (req, res) => {
+    const reqId = Number(req.params.id);
+    const editedMountain = req.body;
+    const mountainIndex = mountainsJson.findIndex(mountain => mountain.id === reqId);
+
+    if (mountainIndex === -1) {
+        res.status(404).send(`No mountain found with id: ${reqId}`);
+    } else if (!validate(editedMountain)) {
+        res.status(400).json({ error: 'Invalid request body format'});
+    } else {
+        editedMountain.id = reqId;
+        mountainsJson[mountainIndex] = editedMountain;
+        res.send(editedMountain);
     }
 });
 
@@ -175,8 +191,8 @@ app.delete('/by-name/:name', (req, res) => {
 });
 
 // PORT 4000 for deployement
-const PORT = 4000;
-//const PORT = 8080;
+//const PORT = 4000;
+const PORT = 8080;
 
 // error will return a "stacktrace" if there is an error, if no error it's "undefined"
 app.listen(PORT, error => {
