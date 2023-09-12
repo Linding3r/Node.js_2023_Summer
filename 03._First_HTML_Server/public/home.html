@@ -18,13 +18,23 @@
     <!-- inline styling-->
    <!-- <h1 style="color: red">HELLO WORLD</h1> -->
    <h1 id="title">Hello</h1>
-   <h1>Hello</h1>
+
+   <h1 id="welcome-message"></h1>
+
+   <a href="/secondPage">Go to second page</a>
+
 
     <!-- assignment: console log in the console "hello" a second after the client visits the frontpage-->
     <script>
-        setTimeout(() => {
-            console.log('Hello');  
-        }, 1000);
+        // assigment: fetch welcomeMessage and cosole.log it
+        fetch("/welcomeMessage?user=Thomas")
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            const message = document.getElementById("welcome-message");
+            message.innerText = result.data;
+        });
+        // assignment bonus: show it on the page
     </script>
 </body>
 </html>

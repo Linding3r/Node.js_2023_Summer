@@ -10,6 +10,17 @@ app.get('/secondPage', (req, res) => {
     res.sendFile(__dirname + '/public/secondPage.html');
 });
 
+//==============================================
+
+app.get('/welcomeMessage', (req, res) => {
+    const userName = req.query.user;
+    if (!userName) {
+        res.send({ data: 'Hello Stranger' });
+    } else {
+        res.send({ data: `Hello ${userName}.` });
+    }
+});
+
 const PORT = 8080;
 app.listen(PORT, error => {
     if (error) {
