@@ -6,7 +6,9 @@ const ajv = new Ajv();
 app.use(express.json());
 
 // added mountain.json with 80 mountains around the world
-const mountainsJson = require('./mountains.json');
+let mountainsJson = require('./mountains.json');
+
+let currentId = 80;
 
 const mountainSchema = {
     type: 'object',
@@ -18,7 +20,6 @@ const mountainSchema = {
             items: { type: 'string' },
         },
     },
-    required: ['name', 'height', 'countries'],
     additionalProperties: false,
 };
 
@@ -124,11 +125,11 @@ app.post('/mountains', (req, res) => {
     const reqMountain = req.body;
 
     if (validate(reqMountain)) {
-        reqMountain.id = mountainsJson.length + 1;
+        reqMountain.id = ++currentId;
         mountainsJson.push(reqMountain);
         res.send(req.body);
     } else {
-        res.status(400).json({ error: 'Invalid request body format' });
+        res.status(400).send({ error: 'Invalid request body format' });
     }
 });
 
@@ -140,27 +141,11 @@ app.patch('/mountains/:id', (req, res) => {
     if (mountainIndex === -1) {
         res.status(404).send(`No mountains found with id: ${reqId}`);
     } else if (!validate(editedMountain)) {
-        res.status(400).json({ error: 'Invalid request body format' });
+        res.status(400).send({ error: 'Invalid request body format' });
     } else {
         editedMountain.id = reqId;
-        mountainsJson[mountainIndex] = editedMountain;
+        mountainsJson[mountainIndex] = {...mountainsJson[mountainIndex], ...editedMountain};
         res.send(req.body);
-    }
-});
-
-app.put('/mountains/:id', (req, res) => {
-    const reqId = Number(req.params.id);
-    const editedMountain = req.body;
-    const mountainIndex = mountainsJson.findIndex(mountain => mountain.id === reqId);
-
-    if (mountainIndex === -1) {
-        res.status(404).send(`No mountain found with id: ${reqId}`);
-    } else if (!validate(editedMountain)) {
-        res.status(400).json({ error: 'Invalid request body format'});
-    } else {
-        editedMountain.id = reqId;
-        mountainsJson[mountainIndex] = editedMountain;
-        res.send(editedMountain);
     }
 });
 
@@ -170,10 +155,9 @@ app.delete('/mountains/:id', (req, res) => {
 
     if (mountainIndex !== -1) {
         mountainsJson.splice(mountainIndex, 1);
-        res.status(204).send();
-        console.log('Successfully deleted mountain with id:', reqId);
+        res.send(`Successfully deleted mountain with id: ${reqId}`);
     } else {
-        res.status(404).json({ error: `No mountain found with id: ${reqId}` });
+        res.status(404).send({ error: `No mountain found with id: ${reqId}` });
     }
 });
 
@@ -183,10 +167,9 @@ app.delete('/by-name/:name', (req, res) => {
 
     if (mountainIndex !== -1) {
         mountainsJson.splice(mountainIndex, 1);
-        res.status(204).send();
-        console.log('Successfully deleted mountain');
+        res.send(`Successfully deleted ${reqName}`);
     } else {
-        res.status(404).json({ error: `No mountain found found by the name: ${reqName}` });
+        res.status(404).send({ error: `No mountain found found by the name: ${reqName}` });
     }
 });
 
