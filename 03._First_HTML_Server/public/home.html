@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <!-- solution 3: link-->
+    <!-- <link rel="stylesheet" href="home.css"> -->
+
+    <!-- solution 2: in-file -->
+    <style>
+        #title{
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <h1>HELLO WORLD</h1>
+    <!-- inline styling-->
+   <!-- <h1 style="color: red">HELLO WORLD</h1> -->
+   <h1 id="title">Hello</h1>
+   <h1>Hello</h1>
+
+    <!-- assignment: console log in the console "hello" a second after the client visits the frontpage-->
+    <script>
+        setTimeout(() => {
+            console.log('Hello');  
+        }, 1000);
+    </script>
 </body>
 </html>
