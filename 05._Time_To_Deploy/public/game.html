@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invention Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #invention-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        img {
+            max-width: 100%;
+        }
+        #options {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .correct {
+            background-color: green;
+            color: white;
+        }
+        .incorrect {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invention Guessing Game</h1>
+    <div id="invention-box">
+        <img id="invention-image" src="" alt="Invention Image">
+        <p id="invention-fact"></p>
+        <p>What year did this get invented?</p>
+        <div id="options"></div>
+    </div>
+
+    <script>
+        const inventionBox = document.getElementById("invention-box");
+        const inventionImage = document.getElementById("invention-image");
+        const inventionFact = document.getElementById("invention-fact");
+        const optionsDiv = document.getElementById("options");
+
+        let inventions = [];
+        let currentInventionIndex = 0;
+        let score = 0;
+        let totalQuestions = 5;
+        let usedIndices = [];
+
+        function fetchRandomInventions() {
+            fetch("/inventions/fiverandom")
+            .then(response => response.json())
+                .then(data => {
+                    inventions = data;
+                    startGame(); 
+                })
+                .catch(error => {
+                    console.error("Error fetching random inventions:", error);
+                });
+        }
+
+        function startGame() {
+            if (currentInventionIndex < totalQuestions) {
+                displayInvention();
+                currentInventionIndex++;
+            } else {
+                showGameResults();
+            }
+        }
+
+        function displayInvention() {
+            const currentInvention = inventions[currentInventionIndex];
+            
+            inventionImage.src = currentInvention.image;
+            inventionFact.textContent = currentInvention.random_fact;
+
+            const correctYear = new Date(currentInvention.date).getFullYear();
+            const answerChoices = generateAnswerChoices(correctYear);
+
+            displayAnswerChoices(answerChoices, correctYear);
+
+            currentInvention.correctYear = correctYear;
+        }
+
+        function generateAnswerChoices(correctYear) {
+            const answerChoices = [correctYear];
+
+            for (let i = 0; i < 3; i++) {
+                let randomYear = correctYear;
+                while (randomYear === correctYear || answerChoices.includes(randomYear)) {
+                    randomYear = getRandomYear(correctYear);
+                }
+                answerChoices.push(randomYear);
+            }
+            return shuffleArray(answerChoices);
+        }
+
+        function getRandomYear(correctYear) {
+            const range = 50;
+            const minYear = correctYear - range;
+            const maxYear = correctYear + range;
+            return Math.floor(Math.random() * (maxYear - minYear + 1) + minYear);
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function displayAnswerChoices(answerChoices, correctYear) {
+            optionsDiv.innerHTML = "";
+            answerChoices.forEach(choice => {
+                const button = document.createElement("button");
+                button.textContent = choice;
+                button.addEventListener("click", () => checkAnswer(choice, correctYear));
+                optionsDiv.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedYear, correctYear) {
+            const currentInvention = inventions[currentInventionIndex - 1];
+            if (selectedYear == currentInvention.correctYear) {
+                score++;
+                markAnswerButtons([selectedYear], correctYear, true);
+            } else {
+                markAnswerButtons([selectedYear], correctYear, false);
+            }
+
+            setTimeout(() => {
+                if (currentInventionIndex < totalQuestions) {
+                    displayInvention();
+                    currentInventionIndex++;
+                } else {
+                    showGameResults();
+                }
+            }, 2000);
+        }
+
+        function markAnswerButtons(selectedYears, correctYear, isCorrect) {
+            optionsDiv.querySelectorAll("button").forEach(button => {
+                const year = parseInt(button.textContent);
+                button.disabled = true;
+                if (year === correctYear) {
+                    button.classList.add("correct");
+                } else if (selectedYears.includes(year)) {
+                    button.classList.add("incorrect");
+                }
+                if (isCorrect && year === correctYear) {
+                    button.classList.add("correct");
+                }
+            });
+        }
+
+        function showGameResults() {
+            inventionBox.innerHTML = `
+                <h2>Game Over!</h2>
+                <p>Your Score: ${score} / ${totalQuestions}</p>
+                <button onclick="location.reload()">Play Again</button>
+            `;
+        }
+        fetchRandomInventions();
+    </script>
+</body>
+</html>

@@ -3,15 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time</title>
+    <title>Random Invention</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #invention-box {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+        }
+        img {
+            max-width: 300px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Time</h1>
-    <h2 id="time"></h2>
+    <h1>Random Invention</h1>
+    <button id="show-invention">Show Random Invention</button>
+    <a href="/game">Play the Invention Guessing Game</a>
+    <div id="invention-box">
+        <h2 id="invention-date"></h2>
+        <img id="invention-image" src="" alt="Invention Image">
+        <p id="invention-fact"></p>
+    </div>
+
     <script>
-        const time = new Date();
-        const timeLine = document.getElementById('time');
-        timeLine.innerHTML = time;
+        const showInventionButton = document.getElementById("show-invention");
+        const inventionBox = document.getElementById("invention-box");
+        const inventionDate = document.getElementById("invention-date");
+        const inventionImage = document.getElementById("invention-image");
+        const inventionFact = document.getElementById("invention-fact");
+
+        showInventionButton.addEventListener("click", () => {
+            fetch("/inventions/random")
+                .then(response => response.json())
+                .then(data => {
+                    inventionDate.textContent = data.date;
+                    inventionImage.src = data.image;
+                    inventionFact.textContent = data.random_fact;
+
+                    inventionBox.style.display = "block";
+                })
+                .catch(error => {
+                    console.error("Error fetching random invention:", error);
+                });
+        });
     </script>
 </body>
 </html>

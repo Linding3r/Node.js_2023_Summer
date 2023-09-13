@@ -1,0 +1,142 @@
+[
+    {
+        "invention": "Light Bulb",
+        "date": "1879-10-22",
+        "id": 1,
+        "random_fact": "The invention of the incandescent light bulb by Thomas Edison revolutionized the way we illuminate our homes and cities. It allowed for longer-lasting and more efficient lighting compared to earlier alternatives like gas lamps.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Gluehlampe_01_KMJ.png"
+    },
+    {
+        "invention": "Telephone",
+        "date": "1876-03-07",
+        "id": 2,
+        "random_fact": "Alexander Graham Bell's invention of the telephone marked a pivotal moment in communication history. It enabled people to talk to each other over long distances, paving the way for the modern telecommunications industry.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Telefon_BW_2012-02-18_13-44-32.JPG/1280px-Telefon_BW_2012-02-18_13-44-32.JPG"
+    },
+    {
+        "invention": "Computer Mouse",
+        "date": "1963-12-09",
+        "id": 3,
+        "random_fact": "The computer mouse, created by Douglas Engelbart, was a groundbreaking input device that changed the way we interact with computers. It allowed for more intuitive and efficient navigation and selection of objects on the screen.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/2/22/3-Tasten-Maus_Microsoft.jpg"
+    },
+    {
+        "invention": "Internet",
+        "date": "1969-10-29",
+        "id": 4,
+        "random_fact": "The precursor to the internet, ARPANET, was created by the U.S. Department of Defense. This revolutionary network laid the foundation for the modern internet, connecting computers and enabling global communication and information sharing.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Internet_map_1024_-_transparent%2C_inverted.png/1024px-Internet_map_1024_-_transparent%2C_inverted.png"
+    },
+    {
+        "invention": "Smartphone",
+        "date": "1994-08-16",
+        "id": 5,
+        "random_fact": "The SPC (by IBM) was the first touchscreen phone. Additionally, it had the ability to send and receive both emails and faxes. It also had a calendar, address book, and a native appointment scheduler, and even featured standard and predictive stylus-compatible screen keyboards.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/IBM_Simon_Personal_Communicator.png/800px-IBM_Simon_Personal_Communicator.png"
+    },
+    {
+        "invention": "Electric Guitar",
+        "date": "1931-10-14",
+        "id": 6,
+        "random_fact": "The Rickenbacker 'Frying Pan' is often considered the first commercially successful electric guitar. This innovation revolutionized the music industry by introducing a new range of sounds and possibilities for guitarists.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Elektrofryingpan.jpg"
+    },
+    {
+        "invention": "Airplane",
+        "date": "1903-12-17",
+        "id": 7,
+        "random_fact": "The Wright brothers, Orville and Wilbur, are credited with the first powered flight. Their invention of the airplane paved the way for modern aviation, enabling people to travel quickly and efficiently across long distances.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Wright_First_Flight_1903Dec17_%28full_restore_115%29.jpg/1280px-Wright_First_Flight_1903Dec17_%28full_restore_115%29.jpg"
+    },
+    {
+        "invention": "Television",
+        "date": "1927-01-26",
+        "id": 8,
+        "random_fact": "Philo Farnsworth is one of the key figures in the development of television technology. His invention of the electronic television system laid the foundation for the television sets that became common in households worldwide.",
+        "image": "https://cdn.britannica.com/28/199428-050-DB65886E/Philo-Farnsworth-television-receiver.jpg"
+    },
+    {
+        "invention": "Penicillin",
+        "date": "1928-09-03",
+        "id": 9,
+        "random_fact": "Alexander Fleming discovered penicillin, the first widely used antibiotic. This breakthrough in medicine revolutionized the treatment of bacterial infections, saving countless lives.",
+        "image": "https://d2jx2rerrg6sh3.cloudfront.net/image-handler/picture/2021/5/shutterstock_1314478190-1.jpg"
+    },
+    {
+        "invention": "Automobile",
+        "date": "1885-01-29",
+        "id": 10,
+        "random_fact": "Karl Benz is often credited with inventing the first practical automobile. The automobile transformed transportation, making it faster and more accessible to the masses.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/7/71/1885Benz.jpg"
+    },
+    {
+        "invention": "Digital Camera",
+        "date": "1975-12-26",
+        "id": 11,
+        "random_fact": "Steve Sasson built the first digital camera prototype at Kodak. This innovation paved the way for the modern era of digital photography, eliminating the need for film and enabling instant image capture.",
+        "image": "https://static01.nyt.com/images/2015/08/11/blogs/20150811-lens-sasson-slide-QS7V/20150811-lens-sasson-slide-QS7V-superJumbo.jpg"
+    },
+    {
+        "invention": "Microwave Oven",
+        "date": "1945-10-08",
+        "id": 12,
+        "random_fact": "The microwave oven was developed by Percy Spencer. This kitchen appliance revolutionized cooking by heating food quickly and efficiently through microwave radiation.",
+        "image": "https://hackaday.com/wp-content/uploads/2020/04/raytheon-radarange.jpg"
+    },
+    {
+        "invention": "Satellite",
+        "date": "1957-10-04",
+        "id": 13,
+        "random_fact": "The first artificial satellite, Sputnik 1, was launched by the Soviet Union. This marked the beginning of the space age and paved the way for satellite-based communication and navigation systems.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Sputnik_1_satellite_model.png"
+    },
+    {
+        "invention": "Refrigerator",
+        "date": "1876-06-14",
+        "id": 14,
+        "random_fact": "Carl von Linde is credited with the invention of the modern refrigerator. Refrigeration technology revolutionized food storage, extending the shelf life of perishable goods and reducing food waste.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/d/d7/BIB_-_K%C3%A4ltemaschine.jpg"
+    },
+    {
+        "invention": "GPS",
+        "date": "1978-02-22",
+        "id": 15,
+        "random_fact": "The Global Positioning System (GPS) was developed by the U.S. Department of Defense. GPS technology revolutionized navigation, allowing precise location tracking and mapping services.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Magellan_GPS_Blazer12.jpg/1280px-Magellan_GPS_Blazer12.jpg"
+    },
+    {
+        "invention": "Velcro",
+        "date": "1955-10-01",
+        "id": 16,
+        "random_fact": "Swiss engineer George de Mestral invented Velcro after observing burrs sticking to his dog's fur. Velcro's hook-and-loop fastening system found applications in various industries, from fashion to aerospace.",
+        "image": "https://s23775.pcdn.co/wp-content/uploads/sites/44/2021/07/TEXTILE_Hook-and-Loop_Mated-EcoLine-1024x1024.jpg.optimal.jpg"
+    },
+    {
+        "invention": "Post-it Notes",
+        "date": "1968-04-06",
+        "id": 17,
+        "random_fact": "Spencer Silver and Art Fry at 3M developed the adhesive used in Post-it Notes. These sticky notes revolutionized office organization and note-taking.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/4/42/PostItNotePad.JPG"
+    },
+    {
+        "invention": "Elevator",
+        "date": "1853-09-20",
+        "id": 18,
+        "random_fact": "Elisha Otis invented the safety brake for elevators, making skyscrapers possible. Elevators transformed urban architecture and enabled the construction of taller and more efficient buildings.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Elisha_OTIS_1854.jpg/1024px-Elisha_OTIS_1854.jpg"
+    },
+    {
+        "invention": "Velocipede (Bicycle)",
+        "date": "1817-06-12",
+        "id": 19,
+        "random_fact": "The first bicycle, the Draisine, was invented by Karl Drais. This human-powered vehicle marked the beginning of modern bicycle design, leading to the development of the bicycle as we know it today.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Boneshaker%2C_European%2C_circa_1868.JPG/1280px-Boneshaker%2C_European%2C_circa_1868.JPG"
+    },
+    {
+        "invention": "Pacemaker",
+        "date": "1958-04-04",
+        "id": 20,
+        "random_fact": "The first implantable pacemaker was developed by Wilson Greatbatch. This life-saving medical device regulates heartbeats and has improved the quality of life for millions of people with cardiac issues.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/5/5e/St_Jude_Medical_pacemaker_with_ruler.jpg"
+    }
+]
