@@ -25,6 +25,7 @@
     <button id="show-invention">Show Random Invention</button>
     <a href="/game">Play the Invention Guessing Game</a>
     <div id="invention-box">
+        <h1 id="invention-name"></h1>
         <h2 id="invention-date"></h2>
         <img id="invention-image" src="" alt="Invention Image">
         <p id="invention-fact"></p>
@@ -36,6 +37,7 @@
         const inventionDate = document.getElementById("invention-date");
         const inventionImage = document.getElementById("invention-image");
         const inventionFact = document.getElementById("invention-fact");
+        const inventionName = document.getElementById("invention-name");
 
         showInventionButton.addEventListener("click", () => {
             fetch("/inventions/random")
@@ -44,7 +46,7 @@
                     inventionDate.textContent = data.date;
                     inventionImage.src = data.image;
                     inventionFact.textContent = data.random_fact;
-
+                    inventionName.textContent = data.invention;
                     inventionBox.style.display = "block";
                 })
                 .catch(error => {
