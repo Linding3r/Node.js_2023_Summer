@@ -43,7 +43,7 @@
     <div id="invention-box">
         <img id="invention-image" src="" alt="Invention Image">
         <p id="invention-fact"></p>
-        <p>What year did this get invented?</p>
+        <p id="question"></p>
         <div id="options"></div>
     </div>
 
@@ -52,6 +52,7 @@
         const inventionImage = document.getElementById("invention-image");
         const inventionFact = document.getElementById("invention-fact");
         const optionsDiv = document.getElementById("options");
+        const question = document.getElementById("question");
 
         let inventions = [];
         let currentInventionIndex = 0;
@@ -85,9 +86,11 @@
             
             inventionImage.src = currentInvention.image;
             inventionFact.textContent = currentInvention.random_fact;
+            question.textContent = `What year was the ${currentInvention.invention} invented?`;
 
             const correctYear = new Date(currentInvention.date).getFullYear();
             const answerChoices = generateAnswerChoices(correctYear);
+            
 
             displayAnswerChoices(answerChoices, correctYear);
 
