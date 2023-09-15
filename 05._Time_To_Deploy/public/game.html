@@ -4,48 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invention Guessing Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #f5f5f5;
         }
         #invention-box {
             border: 1px solid #ccc;
             padding: 20px;
             margin: 20px auto;
             max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         img {
-            max-width: 100%;
+            max-width: 300px;
+            max-height: 300px;
         }
         #options {
             display: flex;
             justify-content: center;
             margin-top: 20px;
         }
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
         button {
             margin: 10px;
             padding: 10px 20px;
             font-size: 16px;
+            background-color: #a9a9a9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .correct {
+        button:hover {
+            background-color: #bebebe;
+        }
+        button.correct {
             background-color: green;
-            color: white;
         }
-        .incorrect {
+        button.incorrect {
             background-color: red;
-            color: white;
+        }
+        #invention-fact {
+            font-style: italic;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Invention Guessing Game</h1>
     <div id="invention-box">
+        <p id="questions-amount"></p>
         <img id="invention-image" src="" alt="Invention Image">
         <p id="invention-fact"></p>
         <p id="question"></p>
         <div id="options"></div>
     </div>
+    <a href="/">Back to Home</a>
 
     <script>
         const inventionBox = document.getElementById("invention-box");
@@ -53,6 +75,7 @@
         const inventionFact = document.getElementById("invention-fact");
         const optionsDiv = document.getElementById("options");
         const question = document.getElementById("question");
+        const questionsAmount = document.getElementById("questions-amount");
 
         let inventions = [];
         let currentInventionIndex = 0;
@@ -84,6 +107,7 @@
         function displayInvention() {
             const currentInvention = inventions[currentInventionIndex];
             
+            questionsAmount.textContent = `Question ${currentInventionIndex+1} of ${totalQuestions}`;
             inventionImage.src = currentInvention.image;
             inventionFact.textContent = currentInvention.random_fact;
             question.textContent = `What year was the ${currentInvention.invention} invented?`;
