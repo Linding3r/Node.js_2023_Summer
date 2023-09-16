@@ -15,12 +15,20 @@ app.get('/game', (req, res) => {
     res.sendFile(__dirname + '/public/game.html');
 });
 
-app.get('/inventions/random', (req, res) => {
+app.get('/inventions', (req, res) => {
+    res.sendFile(__dirname + '/public/inventions.html');
+});
+
+app.get('/api/inventions', (req, res) => {
+    res.send(inventionsJSON);
+});
+
+app.get('/api/inventions/random', (req, res) => {
     const random = getRandomInt(inventionsJSON.length);
     res.send(inventionsJSON[random]);
 });
 
-app.get('/inventions/fiverandom', (req, res) => {
+app.get('/api/inventions/fiverandom', (req, res) => {
     const fiveInventions = [];
     for (let i = 0; i < 5; i++) {
         const random = getRandomInt(inventionsJSON.length);
