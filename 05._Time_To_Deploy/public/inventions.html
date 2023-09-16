@@ -93,8 +93,12 @@
                 const name = document.createElement('h2');
                 name.textContent = data.invention;
 
+                const date = document.createElement('h3');
+                date.textContent = data.date;
+
                 box.appendChild(image);
                 box.appendChild(name);
+                box.appendChild(date);
 
                 return box;
             }
