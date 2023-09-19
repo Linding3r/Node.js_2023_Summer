@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <!-- solution 3: link-->
-    <!-- <link rel="stylesheet" href="home.css"> -->
-
-    <!-- solution 2: in-file -->
-    <style>
-        #title{
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="./home.css">
 </head>
 <body>
     <!-- inline styling-->
@@ -23,18 +16,6 @@
 
    <a href="/secondPage">Go to second page</a>
 
-
-    <!-- assignment: console log in the console "hello" a second after the client visits the frontpage-->
-    <script>
-        // assigment: fetch welcomeMessage and cosole.log it
-        fetch("/welcomeMessage?user=Thomas")
-        .then(response => response.json())
-        .then(result => {
-            console.log(result)
-            const message = document.getElementById("welcome-message");
-            message.innerText = result.data;
-        });
-        // assignment bonus: show it on the page
-    </script>
+    <script src="./home.js"></script>
 </body>
 </html>

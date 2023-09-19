@@ -1,0 +1,31 @@
+{
+  "name": "pokemon",
+  "version": "0.0.1",
+  "description": "Pokemon website for lovers of pokemon",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Linding3r/Node.js_2023_Summer.git"
+  },
+  "keywords": [
+    "pokemon",
+    "pokemon",
+    "battle",
+    "website",
+    "node",
+    "express",
+    "node.js"
+  ],
+  "author": "Lindinger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Linding3r/Node.js_2023_Summer/issues"
+  },
+  "homepage": "https://github.com/Linding3r/Node.js_2023_Summer#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
