@@ -1,0 +1,48 @@
+body {
+    background-color: #ffffff; 
+    color: #1a1a1a; 
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background-color: #333; 
+    padding: 10px 0;
+}
+
+.info-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#dark-mode-toggle {
+    cursor: pointer;
+}
+
+.dark-mode {
+    background-color: #1a1a1a; 
+    color: #fff; 
+}
+
+
+
+#copyButton {
+    position: absolute;
+    top: 42px;
+    right: 0px;
+    z-index: 1;
+}
+
+pre {
+    position: relative;
+}
+
+.code-box {
+    position: relative;
+}

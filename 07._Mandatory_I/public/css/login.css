@@ -1,0 +1,41 @@
+.login-box {
+    max-width: 400px;
+    margin: 200px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-box label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+}
+
+.dark-mode .login-box {
+    background-color: #2B3035;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(77, 77, 77, 0.2);
+}
+
+.dark-mode .login-box label {
+    color: #fff;
+}
+
+.dark-mode .login-box input[type="text"],
+.dark-mode .login-box input[type="password"] {
+    background-color: #555;
+    border: 1px solid #777;
+    color: #fff;
+}
