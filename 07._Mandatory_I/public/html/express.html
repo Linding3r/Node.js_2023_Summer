@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" id="highlight-stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-light.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/switch.css">
+    <title>Express</title>
+</head>
+<div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Page 1</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/express">Express</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin">Admin Page</a>
+                </li>
+            </ul>
+        
+            <input type="checkbox" id="dark-mode-toggle" /><label for="dark-mode-toggle" class="dark-mode-switch">Toggle</label>
+        </div> 
+    </nav>
+    <div class="info-container" style="margin-top: 100px;">
+    <div class="text-box">
+        <h1>Express</h1>
+        <p>Express is a popular and widely used web application framework for Node.js, 
+            a runtime environment for executing JavaScript code on the server side.
+            Express is designed to simplify the process of building web applications and APIs in Node.js 
+            by providing a set of powerful and flexible features and tools.
+        </p>
+    </div>
+</div>
+
+<div class="info-container" style="margin-top: 100px;">
+<h3>Initialize a New Node.js Project with express:</h3>
+</div>
+<div class="info-container">
+    <div class="text-box">
+    <p>Open your terminal and navigate to the directory where you want to create your Express project. 
+        Use the following command to initialize a new Node.js project which create a package.json file:</p>
+    </div>
+    <div class="code-box">
+<pre>
+    <code id="code-snippet" style="width: 400px;">
+npm init -y
+    </code>
+</pre>
+<button class="btn btn-secondary copy-button" id="copyButton">Copy Code</button>
+</div>
+</div>
+<div class="info-container">
+    <p>Next, you'll need to install Express.js as a project dependency. Run the following command:</p>
+<div class="code-box">
+    <pre>
+    
+        <code id="code-snippet" style="width: 400px;">
+npm install express --save
+        </code>
+    </pre>
+    <button class="btn btn-secondary copy-button" id="copyButton">Copy Code</button>
+    </div>
+</div>
+
+
+
+    <div class="info-container">
+        <div class="code-box">
+    <pre>
+
+        <code id="code-snippet">
+            
+app.get('/mountains', (req, res) =&gt; {
+    res.send({ data: mountainsJson });
+});
+             
+app.post('/mountains', (req, res) =&gt; {
+//insert POST logic
+});
+             
+app.patch('/mountains/:id', (req, res) =&gt; {
+//insert PATCH logic
+});
+             
+app.delete('/mountains/:id', (req, res) =&gt; {
+//insert DELETE logic
+});
+        </code>
+    </pre>
+    <button class="btn btn-secondary copy-button" id="copyButton">Copy Code</button>
+</div>
+<div class="text-box">
+    <h2>Routing</h2>
+    <p>Express allows you to define routes that map HTTP methods (e.g., GET, POST, PUT, DELETE) to specific URL patterns. 
+        This makes it easy to handle different types of requests and define how the application responds to them.</p>
+        Here are some examples of routes using different HTTP methods and URL patterns in Express:
+</div>
+</div>
+
+    <script src="./frontpage.js"></script>
+    <script src="../js/darkmode.js"></script>
+    <script src="../js/codesnippet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

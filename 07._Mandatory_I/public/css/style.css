@@ -45,4 +45,15 @@ pre {
 
 .code-box {
     position: relative;
+    margin-right: 30px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
 }

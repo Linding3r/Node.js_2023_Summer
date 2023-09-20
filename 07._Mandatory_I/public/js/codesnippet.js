@@ -1,5 +1,5 @@
-function copyCodeToClipboard() {
-    const codeSnippet = document.getElementById('code-snippet');
+function copyCodeToClipboard(event) {
+    const codeSnippet = event.target.previousElementSibling;
     const textArea = document.createElement('textarea');
     textArea.value = codeSnippet.textContent;
     document.body.appendChild(textArea);
@@ -8,5 +8,7 @@ function copyCodeToClipboard() {
     document.body.removeChild(textArea);
 }
 
-const copyButton = document.getElementById('copyButton');
-copyButton.addEventListener('click', copyCodeToClipboard);
+const copyButtons = document.querySelectorAll('.copy-button');
+copyButtons.forEach((button) => {
+    button.addEventListener('click', copyCodeToClipboard);
+});

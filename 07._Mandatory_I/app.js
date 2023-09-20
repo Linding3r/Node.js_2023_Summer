@@ -8,8 +8,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve('public/html/frontpage.html'));
 });
 
-app.get('/page2', (req, res) => {
-    res.sendFile(path.resolve('public/html/page2.html'));
+app.get('/express', (req, res) => {
+    res.sendFile(path.resolve('public/html/express.html'));
 });
 
 app.get('/admin', (req, res) => {
