@@ -15,6 +15,16 @@ header {
 .info-container {
     max-width: 960px;
     margin: 0 auto;
+    margin-top: 50px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-container-no-margin {
+    max-width: 960px;
+    margin: 0 auto;
     padding: 0 20px;
     display: flex;
     justify-content: space-between;
@@ -31,7 +41,6 @@ header {
 }
 
 
-
 #copyButton {
     position: absolute;
     top: 42px;
@@ -43,17 +52,38 @@ pre {
     position: relative;
 }
 
-.code-box {
+.code-box-left {
     position: relative;
     margin-right: 30px;
+}
+
+.code-box-right {
+    position: relative;
+    margin-left: 30px;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 30px;
+    font-weight: 600;
 }
 
 h2 {
     text-align: center;
     margin-bottom: 30px;
+    font-weight: 600;
+}
+
+h3 {
+    font-weight: 600;
+}
+
+.icon {
+    width: 22px;
+    height: 22px;
+    filter: invert(90%);
+}
+
+#code-snippet {
+    min-width: 400px;
 }

@@ -9,6 +9,13 @@ function copyCodeToClipboard(event) {
 }
 
 const copyButtons = document.querySelectorAll('.copy-button');
+
 copyButtons.forEach((button) => {
-    button.addEventListener('click', copyCodeToClipboard);
-});
+    const img = button.querySelector(".icon");
+
+    img.addEventListener("click", function() {
+      button.click();
+    });
+
+    button.addEventListener("click", copyCodeToClipboard);
+  });

@@ -16,6 +16,10 @@ app.get('/admin', (req, res) => {
     res.sendFile(path.resolve('public/html/adminpanel.html'));
 });
 
+app.get('/test', (req, res) => {
+    res.sendFile(path.resolve('public/html/test.html'));
+});
+
 const PORT = 8080;
 
 app.listen(PORT, () => {
