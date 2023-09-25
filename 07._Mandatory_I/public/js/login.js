@@ -1,25 +1,37 @@
-const message = localStorage.getItem('errorMessage');
+document.addEventListener('DOMContentLoaded', function () {
+  const loginForm = document.querySelector("#login-form");
+  const messageDiv = document.getElementById('message');
 
-if (message === 'notloggedin') {
-  errorMessage.textContent = 'You are not logged in. Please log in to access this page.';
-  errorMessage.style.display = 'block';
-} else if (message === 'tokeninvalid') {
-  errorMessage.textContent = 'Your session has expired. Please log in again.';
-  errorMessage.style.display = 'block';
-}
+  loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-// Clear the error message from local storage
-localStorage.removeItem('errorMessage');
+      const username = loginForm.elements["username"].value;
+      const password = loginForm.elements["password"].value;
+      console.log(username, password);
 
-const loginForm = document.querySelector("#login-form");
-loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const username = loginForm.elements["username"].value;
-  const password = loginForm.elements["password"].value;
-  
-  if(username === "test" && password === "test"){
-    localStorage.setItem("isLoggedIn", true)
-    document.getElementById("login-box").style.display = "none"
-    document.getElementById("content-container").style.display= "block"
-  }
+      fetch('/login', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+          if (data.message === 'Login successful') {
+              messageDiv.textContent = 'Login successful. Redirecting...';
+              localStorage.setItem("isLoggedIn", true)
+              document.getElementById("login-box").style.display = "none"
+              document.getElementById("content-container").style.display= "block"
+              setTimeout(() => {
+                  window.location.href = '/admin';
+              }, 2000);
+          } else {
+              messageDiv.textContent = 'Login failed. Please try again.';
+          }
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      });
+  });
 });

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/switch.css">
     <link rel="stylesheet" href="../css/login.css">
     <title>Front Page</title>
+    <script src="../js/auth.js"></script>
 </head>
 <body>
 
@@ -27,11 +28,10 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/express">Express</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-flex" id="loginLink">
                   <a class="nav-link active" href="/login">Login</a>
                 </li>
             </ul>
-        
             <input type="checkbox" id="dark-mode-toggle" /><label for="dark-mode-toggle" class="dark-mode-switch">Toggle</label>
         </div> 
     </nav>
@@ -51,7 +51,7 @@
     </div>
     <div class="info-container" id="content-container"style="display: none;">
 
-<h1>TEST</h1>
+<h1 id="message"></h1>
 
 
     </div>
