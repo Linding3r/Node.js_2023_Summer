@@ -8,12 +8,16 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve('public/html/frontpage.html'));
 });
 
+app.get('/login', (req, res) => {
+    res.sendFile(path.resolve('public/html/login.html'));
+});
+
 app.get('/express', (req, res) => {
     res.sendFile(path.resolve('public/html/express.html'));
 });
 
-app.get('/admin', (req, res) => {
-    res.sendFile(path.resolve('public/html/adminpanel.html'));
+app.get('/login', (req, res) => {
+    res.sendFile(path.resolve('public/html/login.html'));
 });
 
 app.get('/test', (req, res) => {
