@@ -58,6 +58,7 @@ app.get("/test", (req, res) => {
   res.sendFile(path.resolve("public/html/test.html"));
 });
 
+
 app.post("/login", (req, res) => {
     if (req.body.username === USERNAME && req.body.password === PASSWORD) {
       req.session.isAuthenticated = true;

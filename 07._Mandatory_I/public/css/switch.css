@@ -7,9 +7,9 @@ input[type=checkbox]{
 label.dark-mode-switch {
 	cursor: pointer;
 	text-indent: -9999px;
-	width: 50px;
-	height: 25px;
-	background: grey;
+	width: 75px;
+	height: 38px;
+	background: #9FA2A4;
 	display: block;
 	border-radius: 100px;
 	position: relative;
@@ -20,15 +20,15 @@ label.dark-mode-switch:after {
 	position: absolute;
 	top: 1px;
 	left: 1px;
-	width: 23px;
-	height: 23px;
+	width: 36px;
+	height: 36px;
 	background: #fff;
 	border-radius: 90px;
 	transition: 0.3s;
 }
 
 input:checked + label.dark-mode-switch {
-	background: #191a4d;
+	background: #1A1A1A;
 }
 
 input:checked + label.dark-mode-switch:after {

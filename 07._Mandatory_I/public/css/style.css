@@ -46,6 +46,7 @@ header {
     top: 42px;
     right: 0px;
     z-index: 1;
+    display: none;
 }
 
 pre {
@@ -60,6 +61,14 @@ pre {
 .code-box-right {
     position: relative;
     margin-left: 30px;
+}
+
+.code-box-left:hover #copyButton {
+    display: block;
+}
+
+.code-box-right:hover #copyButton {
+    display: block;
 }
 
 h1 {
@@ -86,4 +95,10 @@ h3 {
 
 #code-snippet {
     min-width: 400px;
+}
+
+.navbar .navbar-nav .nav-link {
+    font-size: 24px;
+    margin-right: 16px;
+    padding-top: 20px;
 }
