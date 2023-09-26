@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <!-- solution 3: link-->
-    <link rel="stylesheet" href="./home.css">
-</head>
-<body>
-    <!-- inline styling-->
-   <!-- <h1 style="color: red">HELLO WORLD</h1> -->
-   <h1 id="title">Hello</h1>
+    <head>
+        <!--This is one solution to redirect after a certain amount of time-->
+        <meta http-equiv="refresh" content="3;url=/secondPage" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+        <!-- solution 3: link-->
+        <link rel="stylesheet" href="./home.css" />
+    </head>
+    <body>
+        <!-- inline styling-->
+        <!-- <h1 style="color: red">HELLO WORLD</h1> -->
+        <h1 id="title">Hello</h1>
 
-   <h1 id="welcome-message"></h1>
+        <h1 id="welcome-message"></h1>
 
-   <a href="/secondPage">Go to second page</a>
+        <a href="/secondPage">Go to second page</a>
 
-    <script src="./home.js"></script>
-</body>
+        <script src="./home.js"></script>
+
+        <script>
+            // assigment redirect to second page after 3 seconds
+            /*setTimeout(() => {
+                window.location.href = '/secondPage';
+            }, 3000);*/
+
+            setTimeout(() => {
+                window.location.replace('/secondPage');
+            }, 3000);
+        </script>
+    </body>
 </html>

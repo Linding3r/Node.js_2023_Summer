@@ -37,6 +37,10 @@ app.get("/express", (req, res) => {
   res.sendFile(path.resolve("public/html/express.html"));
 });
 
+app.get("/node", (req, res) => {
+  res.sendFile(path.resolve("public/html/nodeJs.html"))
+})
+
 app.get("/login", (req, res) => {
   res.sendFile(path.resolve("public/html/login.html"));
 });

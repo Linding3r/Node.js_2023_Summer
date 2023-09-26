@@ -26,6 +26,27 @@ app.get('/welcomeMessage', (req, res) => {
     res.send({ data: welcomeMessage });
 });
 
+
+app.get("/doorman/:key", (req, res) => {
+    if(req.params.key === "sesamopenup") {
+        //return res.send({ data: "You are allowed to enter!" })
+       return res.redirect("/welcomeMessage");
+    }
+    res.send({ data: "You are not allowed to enter!" });
+});
+
+
+app.get("/proxyserver", (req, res) => {
+    // task request https://google.com
+    // task: Then serve it
+    fetch("https://google.com")
+        .then(response => response.text())
+        .then(data => {
+            res.send(data);
+        });
+});
+
+
 const PORT = 8080;
 app.listen(PORT, error => {
     if (error) {

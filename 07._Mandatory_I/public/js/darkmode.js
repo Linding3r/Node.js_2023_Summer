@@ -1,7 +1,6 @@
 const darkModeToggle = document.getElementById("dark-mode-toggle");
 const body = document.body;
 const highlightStylesheet = document.getElementById("highlight-stylesheet");
-const copyButton = document.getElementById("copyButton");
 
 function setDarkMode(isDarkMode) {
   body.classList.toggle("dark-mode", isDarkMode);

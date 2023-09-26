@@ -15,6 +15,8 @@ fetch(url + randomPokemonId)
     }))
     .then((data) => {
         data.name = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+        //data.name = data.name.replace(data.name.charAt(0), data.name.charAt(0).toUpperCase());
+        console.log(data.name)
         document.getElementById("pokemon-name").innerText = data.name;
         document.getElementById("image-wrapper").innerHTML = `<img id="pokemon-image" src="${data.sprites.other.home.front_default}" alt="${data.name}">`;
         // with the one under you could do crossside scripting attacks if you don't sanitize the data
