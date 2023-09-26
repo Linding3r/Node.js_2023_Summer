@@ -7,6 +7,8 @@ function setDarkMode(isDarkMode) {
   highlightStylesheet.href = isDarkMode
     ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-dark.min.css"
     : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/atom-one-light.min.css";
+  const listExample = document.getElementById("list-example");
+  listExample.setAttribute("data-bs-theme", isDarkMode ? "dark" : "light");
 
 }
 
