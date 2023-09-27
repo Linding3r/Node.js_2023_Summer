@@ -53,6 +53,15 @@ pre {
     position: relative;
 }
 
+.code-box-center{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 900px;
+}
+
 .code-box-left {
     position: relative;
     margin-right: 30px;
@@ -112,4 +121,9 @@ h4 {
     margin-left: 1vw;
     align-content: start;
     position: fixed;
+}
+
+.list-group-item.list-group-item-action.active{
+    background-color: #9FA2A4 !important;
+    border-color: #9FA2A4 !important;
 }
