@@ -38,19 +38,15 @@
     </nav>
 
     <div id="list-example" class="list-group" data-bs-theme="dark">
-        <a class="list-group-item list-group-item-action" href="#list-item-1">1. Bascis</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-1">1. Basics</a>
         <a class="list-group-item list-group-item-action" href="#list-item-2">2. Numbers and Strings</a>
         <a class="list-group-item list-group-item-action" href="#list-item-3">3. Objects</a>
         <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-5">Item 5</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-6">Item 6</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-7">Item 7</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-8">Item 8</a>
       </div>
       <div class="info-container">
       <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
         
-        <h2 id="list-item-1">1. Bascis</h2>
+        <h2 id="list-item-1">1. Basics</h2>
         <div class="info-container">
         <p>This code example covers fundamental concepts related to variables, strings, and numbers. 
             It consists of two exercises that demonstrate the use of these concepts in JavaScript</p>
@@ -73,6 +69,33 @@ console.log("My first name is", firstName,"and my last name is", lastName)
       </code>
   </pre>
   </div>
+</div>
+
+<div class="info-container">
+    <p>The second exercise provides two variables, year and number. Your task is to add the value of number to 
+        the value of year while adhering to the constraint that you cannot modify lines 1 or 2. To address this challenge, 
+        the code demonstrates three distinct methods of adding a number to a string: parseInt, Number, and unary + operator. 
+        The results are printed to the console.</p>
+    <div class="code-box-right">
+        <pre>
+          <code id="code-snippet">
+const year = "2022";
+const number = 1;
+
+// Add the year plus the number
+// The result should be 2023
+// You cannot touch line 1 or 2
+
+const newYear = parseInt(year) + number;
+const newYear2 = Number(year) + number;
+const newYear3 = +year + number;
+
+console.log(newYear);
+console.log(newYear2);
+console.log(newYear3);              
+        </code>
+    </pre>
+    </div>
 </div>
         
   <h2 id="list-item-2" style="margin-top: 100px;">2. Numbers and Strings</h2>
@@ -102,12 +125,9 @@ console.log(resultOne);
 const numberOne = "1.10";
 const numberTwo = "2.30";
 
-// add those two numbers and show the result
-// you cannot touch line 1 neither line 2
+const resultTwo = parseFloat(numberOne) + parseFloat(numberTwo);
 
-const resultOne = parseFloat(numberOne) + parseFloat(numberTwo)
-
-console.log(resultOne);                
+console.log(resultTwo.toFixed(2));
             </code>
         </pre>
         </div>
@@ -241,21 +261,7 @@ console.log(thisSong.about);
     </div>
 
         <h4 id="list-item-4">Item 4</h4>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <p>...</p>
-        <h4 id="list-item-5">Item 5</h4>
-        <p>...</p>
-        <h4 id="list-item-6">Item 6</h4>
-        <p>...</p>
-        <h4 id="list-item-7">Item 7</h4>
-        <p>...</p>
-        <h4 id="list-item-8">Item 8</h4>
-        <p>...</p>
+
       </div>
     </div>
       

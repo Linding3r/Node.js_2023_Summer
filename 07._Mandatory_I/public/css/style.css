@@ -121,6 +121,9 @@ h4 {
     margin-left: 1vw;
     align-content: start;
     position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
 }
 
 .list-group-item.list-group-item-action.active{
