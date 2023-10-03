@@ -4,6 +4,7 @@
 import express from 'express';
 import { randomInFromInterval } from './util/randomUtil.js';
 
+
 const app = express();
 
 app.use(express.static('public'));
@@ -60,7 +61,7 @@ app.get('/battlepokemon', (req, res) => {
     }
 });
 
-const PORT = 8080;
+const PORT = Number(process.env.PORT) || 8080;
 
 app.listen(PORT, () => {
     console.log('Server running on port', PORT);

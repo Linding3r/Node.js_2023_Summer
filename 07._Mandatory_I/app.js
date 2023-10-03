@@ -41,6 +41,10 @@ app.get("/node", (req, res) => {
   res.sendFile(path.resolve("public/html/nodeJs.html"))
 })
 
+app.get("/projects", (req, res) => {
+  res.sendFile(path.resolve("public/html/projects.html"))
+})
+
 app.get("/login", (req, res) => {
   res.sendFile(path.resolve("public/html/login.html"));
 });
