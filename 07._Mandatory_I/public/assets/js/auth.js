@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function createAdminLink() {
         const adminLink = document.createElement('li'); 
-        adminLink.innerHTML = '<a class="nav-link" href="/admin">Admin</a>'; 
+        adminLink.innerHTML = '<a class="nav-link $ACTIVE_PAGE_admin" href="/admin">Admin</a>'; 
         adminLink.id = 'adminLink'; 
         return adminLink;
     }

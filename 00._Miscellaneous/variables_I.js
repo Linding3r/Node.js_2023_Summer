@@ -20,9 +20,7 @@ console.log("This is the first '''''' way");
 console.log('This is the second """""" way');
 
 //can have both in it and have js expressions in it
-console.log(`This is the third """" '''''''${2+1}
-
-.`); 
+console.log(`This is the third """" '''''''${2+1}.`); 
 
 consoleLogCounter += 3;
 

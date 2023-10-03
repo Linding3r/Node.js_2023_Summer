@@ -1,6 +1,5 @@
 import express from "express";
 import session from "express-session";
-import path from "path";
 const app = express();
 app.use(express.static("public"));
 app.use(express.json());
@@ -12,6 +11,8 @@ app.use(
       saveUninitialized: true,
     })
   );
+
+import { adminPage, frontpagePage, expressPage, nodejsPage, loginPage, projectsPage } from "./util/preparePages.js";
 
 
 const USERNAME = "admin";
@@ -26,31 +27,31 @@ function requireAuth(req, res, next) {
 }
 
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("public/html/frontpage.html"));
+  res.send(frontpagePage);
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(path.resolve("public/html/login.html"));
+  res.send(loginPage);
 });
 
 app.get("/express", (req, res) => {
-  res.sendFile(path.resolve("public/html/express.html"));
+  res.send(expressPage);
 });
 
 app.get("/node", (req, res) => {
-  res.sendFile(path.resolve("public/html/nodeJs.html"))
+  res.send(nodejsPage)
 })
 
 app.get("/projects", (req, res) => {
-  res.sendFile(path.resolve("public/html/projects.html"))
+  res.send(projectsPage)
 })
 
 app.get("/login", (req, res) => {
-  res.sendFile(path.resolve("public/html/login.html"));
+  res.send(loginPage);
 });
 
 app.get("/admin", requireAuth, (req, res) => {
-  res.sendFile(path.resolve("public/html/admin.html"));
+  res.send(adminPage);
 });
 
 app.get('/checkAuth', (req, res) => {
@@ -59,11 +60,6 @@ app.get('/checkAuth', (req, res) => {
     } else {
         res.status(200).json({ isAuthenticated: false });
     }
-});
-
-//UI Testing page
-app.get("/test", (req, res) => {
-  res.sendFile(path.resolve("public/html/test.html"));
 });
 
 
