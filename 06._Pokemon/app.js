@@ -4,28 +4,30 @@
 import express from 'express';
 import { randomInFromInterval } from './util/randomUtil.js';
 
-
 const app = express();
 
 app.use(express.static('public'));
 
-import path from 'path';
-
 //with module we can't use __dirname, one of the trade offs of using modules instead of common JS
 // instead we import path from path and use path.resolve
+// ===================== Read Pages =====================
+
+import { frontpagePage, battlePage, contactPage } from './util/preparePages.js';
+
 
 // ======================== HTML ========================
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve('./public/frontpage/frontpage.html'));
+    res.send(frontpagePage);
+    //res.sendFile(path.resolve('./public/frontpage/frontpage.html'));
 });
 
 app.get('/battle', (req, res) => {
-    res.sendFile(path.resolve('./public/battle/battle.html'));
+    res.send(battlePage);
 });
 
 app.get('/contact', (req, res) => {
-    res.sendFile(path.resolve('./public/contact/contact.html'));
+    res.send(contactPage);
 });
 
 // ======================== Routes ========================
@@ -45,7 +47,7 @@ app.get('/battlepokemon', (req, res) => {
             })
             .then(data => {
                 const name = data.name.charAt(0).toUpperCase() + data.name.slice(1);
-                const url = data.sprites.other.home.front_default;
+                const url = data.sprites.other["official-artwork"].front_default;
                 const strength = randomInFromInterval(1, 10);
 
                 currentPokemon = {
