@@ -15,9 +15,10 @@
 
 </head>
 <body>
-  <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <nav id="navbar" class="navbar sticky-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <a class="navbar-brand" href="/">
-        <img src="../../assets/img/l_logo.png" id="nav-logo" alt="">
+        <img src="../../assets/img/l_logo_black.png" class="nav-logo" id="nav-logo-dark" alt="">
+        <img src="../../assets/img/l_logo_white.png" class="nav-logo" id="nav-logo-light"alt="">
       </a>
         <div class="container-fluid">
             <ul class="navbar-nav">
@@ -25,10 +26,16 @@
                   <a class="nav-link $ACTIVE_PAGE_frontpage" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link $ACTIVE_PAGE_js101" href="/js101">JavaScript</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link $ACTIVE_PAGE_node" href="/node">Node.js</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link $ACTIVE_PAGE_express" href="/express">Express</a>
+                  <a class="nav-link $ACTIVE_PAGE_express" href="/express">Express.js</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link $ACTIVE_PAGE_server" href="/server">Server</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link $ACTIVE_PAGE_projects" href="/projects">Projects</a>

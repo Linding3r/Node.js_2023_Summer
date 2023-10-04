@@ -6,10 +6,10 @@ export const frontpagePage = renderPage(frontpage, {
     activePage: 'frontpage'
 })
 
-const nodejs = readPage('./public/pages/nodejs/nodeJs.html');
-export const nodejsPage = renderPage(nodejs, {
-    tabTitle: 'Node.js',
-    activePage: 'node'
+const nodejs = readPage('./public/pages/js101/js101.html');
+export const js101Page = renderPage(nodejs, {
+    tabTitle: 'JavaScript',
+    activePage: 'js101'
 });
 
 const express = readPage('./public/pages/express/express.html');
@@ -35,4 +35,16 @@ const admin = readPage('./public/pages/admin/admin.html');
 export const adminPage = renderPage(admin, {
     tabTitle: 'Admin',
     activePage: 'admin'
+});
+
+const server = readPage('./public/pages/serverPage/serverPage.html');
+export const serverPage = renderPage(server, {
+    tabTitle: 'Server',
+    activePage: 'server'
+});
+
+const node = readPage('./public/pages/node/node.html');
+export const nodePage = renderPage(node, {
+    tabTitle: 'Node',
+    activePage: 'node'
 });

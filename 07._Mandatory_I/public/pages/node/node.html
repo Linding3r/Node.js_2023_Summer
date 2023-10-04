@@ -1,0 +1,152 @@
+<div id="banner">
+    <h1 class="banner-text">Node.js</h1>
+</div>
+<div id="list-example" class="list-group" data-bs-theme="dark">
+    <a class="list-group-item list-group-item-action" href="#list-item-1">Package Managers</a>
+    <a class="list-group-item list-group-item-action" href="#list-item-2">Start Application</a>
+    <a class="list-group-item list-group-item-action" href="#list-item-3">package.json</a>
+    <a class="list-group-item list-group-item-action" href="#list-item-4">4</a>
+</div>
+<div class="info-container-large">
+    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" tabindex="0">
+    <h1>Node.js 101 </h1>
+    <p>Node.js is an open-source, server-side JavaScript runtime environment that enables developers to run JavaScript code on the server. 
+        It's known for its non-blocking, asynchronous architecture, making it ideal for scalable and real-time applications. 
+        Node.js has a vast ecosystem of packages through npm, is cross-platform, offers fast performance via the V8 engine, 
+        and boasts a thriving community of developers. It's commonly used for building web servers, APIs, and networked 
+        applications, making it a popular choice in modern web development.</p>
+
+    <h3 id="list-item-1" class="h4-center"style="margin-top: 100px;">Package Managers: Maven vs. npm</h3>
+    <p>Node.js has a rich ecosystem of open-source packages and modules available through the Node Package Manager (npm). 
+        Npm makes it easy to discover and integrate third-party libraries and tools into your Node.js projects.</p>
+    <h4 id="h4-left">Maven:</h4>
+    <ul>
+        <li><strong>Configuration File:</strong>Maven uses a "pom.xml" (Project Object Model) file to define project metadata, dependencies, and build configurations.</li>
+        <br>
+        <li><strong>Meta Information:</strong>The "pom.xml" contains metadata about the project, such as its name, version, and description.</li>
+        <br>
+        <li><strong>Dependencies:</strong>Maven uses XML-based dependency declarations to specify required libraries and their versions.</li>
+        <br>
+        <li><strong>Build Life Cycle Methods:</strong>Maven follows a build life cycle with phases like "clean," "compile," "test," and "package" to manage the build process.</li>
+    </ul>
+
+    <h4 id="h4-left">npm (Node Package Manager):</h4>
+    <ul>
+        <li><strong>Configuration File:</strong>npm uses a "package.json" file to manage project configuration and dependencies.</li>
+        <br>
+        <li><strong>Meta Information:</strong>The "package.json" file includes metadata about the project, such as name, version, and description, similar to the "pom.xml."</li>
+        <br>
+        <li><strong>Dependencies:</strong>npm uses a "dependencies" section to list project dependencies and their versions.</li>
+        <br>
+        <li><strong>Build Life Cycle Methods:</strong>npm allows the definition of custom scripts in the "scripts" section, facilitating various tasks like building, testing, and running the application.</li>
+    </ul>
+
+
+    <h3 id="list-item-2" class="h4-center" style="margin-top: 100px;">Start Application</h3>
+
+    <div class="info-container-no-margin">
+        <div class="code-box-left">
+            <pre>
+            <code id="code-snippet">
+node app.js
+            </code>
+        </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+        <div class="text-box">
+            <p>To start your Express application, run the following command in your terminal.</p>
+        </div>
+    </div>
+    <div class="info-container-no-margin">
+        <div class="code-box-left">
+            <pre>
+            <code id="code-snippet">
+nodemon app.js
+            </code>
+        </pre>
+    
+            <button class="btn btn-secondary copy-button" id="copyButton"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+        <div class="text-box">
+            <p>
+                If you install the nodemon package, you can use the nodemon command instead of node to start your application. Nodemon will automatically restart
+                your application when you make changes to your code, which is useful for development.
+            </p>
+        </div>
+    </div>
+
+    <h3 id="list-item-3" class="h4-center"style="margin-top: 100px;">package.json</h3>
+    <p>The package.json file is a critical component of Node.js projects and serves multiple purposes:</p>
+
+    <div class="info-container-no-margin">
+        <div class="text-box">
+            <p>
+                <strong>Dependency Management:</strong> One of the primary purposes of package.json is to manage project dependencies. 
+                It contains a list of dependencies (libraries or packages) that your Node.js application relies on. These dependencies 
+                can be external packages from the Node Package Manager (NPM) registry or custom modules you've developed. 
+                Each dependency is listed along with its version number.
+                Example package.json snippet with dependencies:
+            </p>
+        </div>
+        <div class="code-box-right">
+            <pre>
+            <code id="code-snippet">
+{
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-session": "^1.17.3",
+    }
+}         
+            </code>
+        </pre>
+        </div>
+        </div>
+        <div class="info-container-no-margin">
+            <div class="code-box-left">
+                <pre>
+                <code id="code-snippet">
+{
+    "scripts": {
+        "build": "npm install",
+        "start": "node app.js"
+    }
+}         
+                </code>
+            </pre>
+            </div>
+                <p>
+                    <strong>Scripts:</strong> package.json can define scripts that are executable via the command line. Common scripts 
+                    include starting the application, running tests, or performing build tasks. 
+                    These scripts can be customized to suit your project's needs.
+                    Example package.json with custom scripts:
+                </p>
+        </div>
+        <div class="info-container-no-margin">
+                <p>
+                    <strong>Metadata:</strong> package.json contains metadata about the project, 
+                    such as the project name, description, author, license, and more.
+                    Example package.json metadata:
+                </p>
+            <div class="code-box-right">
+                <pre>
+                <code id="code-snippet">
+{
+    "name": "my-node-app",
+    "version": "1.0.0",
+    "description": "A simple Node.js application",
+    "author": "Lindinger",
+    "license": "MIT"
+    }      
+                </code>
+            </pre>
+            </div>
+            </div>
+
+
+<p>When you install dependencies using "npm install", it generates a package-lock.json file that locks the 
+    specific versions of dependencies to ensure consistent installations across different environments.
+    In summary, the package.json file is central to Node.js development, as it manages project dependencies, 
+    defines scripts for common tasks, holds project metadata, and ensures version consistency. 
+    It's crucial for collaboration, deployment, and maintaining the integrity of your Node.js application.</p>
+        </div>
+    </div>

@@ -13,7 +13,7 @@ app.use(
     })
   );
 
-import { adminPage, frontpagePage, expressPage, nodejsPage, loginPage, projectsPage } from "./util/preparePages.js";
+import { adminPage, frontpagePage, expressPage, js101Page, loginPage, projectsPage, serverPage, nodePage } from "./util/preparePages.js";
 
 
 const USERNAME = "admin";
@@ -39,13 +39,21 @@ app.get("/express", (req, res) => {
   res.send(expressPage);
 });
 
-app.get("/node", (req, res) => {
-  res.send(nodejsPage)
-})
+app.get("/js101", (req, res) => {
+  res.send(js101Page)
+});
 
 app.get("/projects", (req, res) => {
   res.send(projectsPage)
-})
+});
+
+app.get("/server", (req, res) => {
+  res.send(serverPage);
+});
+
+app.get("/node", (req, res) => {
+  res.send(nodePage);
+});
 
 app.get("/login", (req, res) => {
   res.send(loginPage);

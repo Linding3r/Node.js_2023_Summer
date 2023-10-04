@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const loginForm = document.querySelector("#login-form");
   const messageDiv = document.getElementById('message');
+  const errorDiv = document.getElementById('error-message');
 
 
   loginForm.addEventListener('submit', function (e) {
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   window.location.href = '/admin';
               }, 2000);
           } else {
-              messageDiv.textContent = 'Login failed. Please try again.';
+              errorDiv.textContent = 'Login failed. Please try again.';
           }
       })
       .catch((error) => {

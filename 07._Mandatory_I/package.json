@@ -10,7 +10,7 @@
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lindinger",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
