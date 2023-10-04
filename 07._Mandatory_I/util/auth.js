@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } else {
             const adminLink = document.getElementById('adminLink');
+            loginLink.innerHTML = '<a class="nav-link $ACTIVE_PAGE_login" href="/login">Login</a>';
             if (adminLink) {
                 adminLink.remove();
             }

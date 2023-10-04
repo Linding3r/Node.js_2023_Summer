@@ -3,6 +3,7 @@ import session from "express-session";
 const app = express();
 app.use(express.static("public"));
 app.use(express.json());
+app.use('/util', express.static('util'));
 
 app.use(
     session({

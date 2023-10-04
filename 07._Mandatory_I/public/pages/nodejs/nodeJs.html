@@ -1,27 +1,28 @@
-
-    <div id="list-example" class="list-group" data-bs-theme="dark">
-        <a class="list-group-item list-group-item-action" href="#list-item-1">1. Basics</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-2">2. Numbers and Strings</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-3">3. Objects</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
-      </div>
-      <div class="info-container">
-      <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-        
+<div id="list-example" class="list-group" data-bs-theme="dark">
+    <a class="list-group-item list-group-item-action" href="#list-item-1">1. Basics</a>
+    <a class="list-group-item list-group-item-action" href="#list-item-2">2. Numbers and Strings</a>
+    <a class="list-group-item list-group-item-action" href="#list-item-3">3. Objects</a>
+    <a class="list-group-item list-group-item-action" href="#list-item-4">4. Arrays</a>
+</div>
+<div class="info-container">
+    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" tabindex="0">
         <h2 id="list-item-1">1. Basics</h2>
         <div class="info-container">
-        <p>This code example covers fundamental concepts related to variables, strings, and numbers. 
-            It consists of two exercises that demonstrate the use of these concepts in JavaScript</p>
+            <p>
+                This code example covers fundamental concepts related to variables, strings, and numbers. It consists of two exercises that demonstrate the use
+                of these concepts in JavaScript
+            </p>
         </div>
-            <div class="info-container">
-<p>In this exercise, you are introduced to two variables, firstName and lastName, which hold string values. 
-    The goal is to display a message in the console that combines these variables to form a sentence. 
-    The code showcases two methods of achieving this: using template literals and traditional string concatenation. 
-    Running this code will print your first and last name in two different way</p>
-            </div>
-            <div class="info-container">
-        <div class="code-box-center">
-          <pre>
+        <div class="info-container">
+            <p>
+                In this exercise, you are introduced to two variables, firstName and lastName, which hold string values. The goal is to display a message in the
+                console that combines these variables to form a sentence. The code showcases two methods of achieving this: using template literals and
+                traditional string concatenation. Running this code will print your first and last name in two different way
+            </p>
+        </div>
+        <div class="info-container">
+            <div class="code-box-center">
+                <pre>
             <code id="code-snippet">        
 const firstName = "Anders";
 const lastName = "Latif";
@@ -30,16 +31,17 @@ console.log(`My first name is ${firstName} and my last name is ${lastName}`)
 console.log("My first name is", firstName,"and my last name is", lastName)    
       </code>
   </pre>
-  </div>
-</div>
+            </div>
+        </div>
 
-<div class="info-container">
-    <p>The second exercise provides two variables, year and number. Your task is to add the value of number to 
-        the value of year while adhering to the constraint that you cannot modify lines 1 or 2. To address this challenge, 
-        the code demonstrates three distinct methods of adding a number to a string: parseInt, Number, and unary + operator. 
-        The results are printed to the console.</p>
-    <div class="code-box-right">
-        <pre>
+        <div class="info-container">
+            <p>
+                The second exercise provides two variables, year and number. Your task is to add the value of number to the value of year while adhering to the
+                constraint that you cannot modify lines 1 or 2. To address this challenge, the code demonstrates three distinct methods of adding a number to a
+                string: parseInt, Number, and unary + operator. The results are printed to the console.
+            </p>
+            <div class="code-box-right">
+                <pre>
           <code id="code-snippet">
 const year = "2022";
 const number = 1;
@@ -57,15 +59,18 @@ console.log(newYear2);
 console.log(newYear3);              
         </code>
     </pre>
-    </div>
-</div>
-        
-  <h2 id="list-item-2" style="margin-top: 100px;">2. Numbers and Strings</h2>
-  <div class="info-container">
-        <p>In this exercise, two variables, numberOne and numberTwo, hold string representations of decimal numbers. The objective is to add these numbers together and display the result as a float. The code uses the parseFloat 
-            function to convert the string values to floats and then performs the addition.</p>
-        <div class="code-box-right">
-            <pre>
+            </div>
+        </div>
+
+        <h2 id="list-item-2" style="margin-top: 100px">2. Numbers and Strings</h2>
+        <div class="info-container">
+            <p>
+                In this exercise, two variables, numberOne and numberTwo, hold string representations of decimal numbers. The objective is to add these numbers
+                together and display the result as a float. The code uses the parseFloat function to convert the string values to floats and then performs the
+                addition.
+            </p>
+            <div class="code-box-right">
+                <pre>
               <code id="code-snippet">
 const numberOne = "1.10";
 const numberTwo = "2.30";
@@ -78,11 +83,11 @@ const resultOne = parseFloat(numberOne) + parseFloat(numberTwo)
 console.log(resultOne);                
             </code>
         </pre>
+            </div>
         </div>
-    </div>
-    <div class="info-container">
-        <div class="code-box-left">
-            <pre>
+        <div class="info-container">
+            <div class="code-box-left">
+                <pre>
               <code id="code-snippet">
 const numberOne = "1.10";
 const numberTwo = "2.30";
@@ -92,15 +97,19 @@ const resultTwo = parseFloat(numberOne) + parseFloat(numberTwo);
 console.log(resultTwo.toFixed(2));
             </code>
         </pre>
+            </div>
+            <p>
+                Similar to the previous exercise, this exercise involves adding two numbers represented as strings. However, it adds the extra step of
+                formatting the result to display it with precisely two decimal places using the toFixed method.
+            </p>
         </div>
-        <p>Similar to the previous exercise, this exercise involves adding two numbers represented as strings. 
-            However, it adds the extra step of formatting the result to display it with precisely two decimal places using the toFixed method.</p>
-    </div>
-    <div class="info-container">
-        <p>In this exercise, three numeric variables (one, two, and three) are provided, and the goal is to calculate their average with five 
-            decimal places. The code performs the necessary arithmetic operations and utilizes the toFixed method to control the decimal precision.</p>
-        <div class="code-box-right">
-            <pre>
+        <div class="info-container">
+            <p>
+                In this exercise, three numeric variables (one, two, and three) are provided, and the goal is to calculate their average with five decimal
+                places. The code performs the necessary arithmetic operations and utilizes the toFixed method to control the decimal precision.
+            </p>
+            <div class="code-box-right">
+                <pre>
               <code id="code-snippet">
 const one = 10;
 const two = 45;
@@ -113,11 +122,11 @@ const average = (one+two+three) / 3;
 console.log(average.toFixed(5));                
             </code>
         </pre>
+            </div>
         </div>
-    </div>
-    <div class="info-container">
-        <div class="code-box-left">
-            <pre>
+        <div class="info-container">
+            <div class="code-box-left">
+                <pre>
               <code id="code-snippet">
 const letters = "abc";
 
@@ -128,15 +137,19 @@ const charC = letters.charAt(2);
 console.log(charC);               
             </code>
         </pre>
+            </div>
+            <p>
+                Here, a string variable letters holds the value "abc," and the task is to extract the character "c" from it. The code uses the charAt method to
+                access the character at the specified index.
+            </p>
         </div>
-        <p>Here, a string variable letters holds the value "abc," and the task is to extract the character "c" from it. 
-            The code uses the charAt method to access the character at the specified index.</p>
-    </div>
-    <div class="info-container">
-        <p>In the final exercise, a string variable fact contains the text "You are learning javascript!" The objective is to capitalize the lowercase "j" in 
-            "javascript." The code utilizes the replace method to achieve this text manipulation.</p>
-        <div class="code-box-right">
-            <pre>
+        <div class="info-container">
+            <p>
+                In the final exercise, a string variable fact contains the text "You are learning javascript!" The objective is to capitalize the lowercase "j"
+                in "javascript." The code utilizes the replace method to achieve this text manipulation.
+            </p>
+            <div class="code-box-right">
+                <pre>
               <code id="code-snippet">
 const fact = "You are learning javascript!";
 
@@ -147,18 +160,22 @@ const factDone = fact.replace('j','J');
 console.log(factDone);              
             </code>
         </pre>
+            </div>
         </div>
-    </div>
-    
-    <h2 id="list-item-3" style="margin-top: 100px;">3. Objects</h2>
-    <p>This code snippet focuses on working with JavaScript objects. Objects are fundamental data structures 
-        that allow you to store and manipulate data in a structured manner. The following exercises provide hands-on 
-        experience with working with objects, a crucial concept in JavaScript for organizing and managing data. </p>
-    <div class="info-container">
-        <p>In this exercise, you are introduced to an object named myObj that contains a single key-value pair.
-             The objective is to retrieve and log the value associated with the key "message." This exercise illustrates how to access values from an object using dot notation.</p>
-        <div class="code-box-right">
-            <pre>
+
+        <h2 id="list-item-3" style="margin-top: 100px">3. Objects</h2>
+        <p>
+            This code snippet focuses on working with JavaScript objects. Objects are fundamental data structures that allow you to store and manipulate data in
+            a structured manner. The following exercises provide hands-on experience with working with objects, a crucial concept in JavaScript for organizing
+            and managing data.
+        </p>
+        <div class="info-container">
+            <p>
+                In this exercise, you are introduced to an object named myObj that contains a single key-value pair. The objective is to retrieve and log the
+                value associated with the key "message." This exercise illustrates how to access values from an object using dot notation.
+            </p>
+            <div class="code-box-right">
+                <pre>
                 <code id="code-snippet">
 const myObj = { message: "Hello, earthling! I bring peace." };
 
@@ -167,26 +184,30 @@ const myObj = { message: "Hello, earthling! I bring peace." };
 console.log(myObj.message);            
             </code>
         </pre>
+            </div>
         </div>
-    </div>
 
-    <div class="info-container">
-        <div class="code-box-left">
-            <pre>
+        <div class="info-container">
+            <div class="code-box-left">
+                <pre>
               <code id="code-snippet">
 const tObj = { name:"Thomas", age: 31}              
             </code>
         </pre>
+            </div>
+            <p>
+                Here, you are tasked with creating your own object named tObj that holds your name and age as properties. This exercise demonstrates how to
+                define and initialize objects with custom key-value pairs.
+            </p>
         </div>
-        <p>Here, you are tasked with creating your own object named tObj that holds your name 
-        and age as properties. This exercise demonstrates how to define and initialize objects with custom key-value pairs.</p>
-    </div>
 
-    <div class="info-container">
-        <p>In this exercise, an empty object named stackOverflow is provided, and your goal is to add a 
-    property named "isAllowed" with a value of true to it. The code showcases how to add properties to an existing object.</p>
-        <div class="code-box-right">
-            <pre>
+        <div class="info-container">
+            <p>
+                In this exercise, an empty object named stackOverflow is provided, and your goal is to add a property named "isAllowed" with a value of true to
+                it. The code showcases how to add properties to an existing object.
+            </p>
+            <div class="code-box-right">
+                <pre>
                 <code id="code-snippet">
 const stackOverflow = {};
 
@@ -197,12 +218,12 @@ stackOverflow.isAllowed = true;
 console.log(stackOverflow.isAllowed);              
             </code>
         </pre>
+            </div>
         </div>
-    </div>
 
-    <div class="info-container">
-        <div class="code-box-left">
-            <pre>
+        <div class="info-container">
+            <div class="code-box-left">
+                <pre>
               <code id="code-snippet">
 const thisSong = { description: "The best song in the world." };
 
@@ -216,14 +237,175 @@ thisSong.about = "Just a tribute."
 console.log(thisSong.about);            
             </code>
         </pre>
+            </div>
+            <p>
+                The final exercise involves an object called thisSong with a "description" property. The task is to remove the "description" property and add a
+                new property named "about" with the value "Just a tribute." This exercise demonstrates property deletion and modification in JavaScript objects.
+            </p>
         </div>
-        <p>The final exercise involves an object called thisSong with a "description" property. 
-            The task is to remove the "description" property and add a new property named "about" 
-            with the value "Just a tribute." This exercise demonstrates property deletion and modification in JavaScript objects.</p>
+
+        <h4 id="list-item-4">4. Arrays</h4>
+        <div class="info-container">
+            <p>
+                This code snippet focuses on arrays and for loops in JavaScript, essential for working with collections of data and performing iterative tasks.
+                It consists of several exercises that demonstrate array manipulation and iteration using for loops. Let's briefly explore each exercise:
+            </p>
+        </div>
+
+
+        <div class="info-container">
+            <p>
+                In this initial exercise, you are introduced to an array called letters containing characters. The objective is to log the character "b" from
+                the array. This exercise illustrates how to access specific elements in an array by their index.
+            </p>
+            <div class="code-box-right">
+                <pre>
+                <code id="code-snippet">
+const letters = ["a","b","c"];
+// show b in the console 
+
+console.log(letters[1]);          
+            </code>
+        </pre>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="code-box-left">
+                <pre>
+              <code id="code-snippet">
+const friends = [];
+const friend1 = {name: "Thomas", age: 31}
+const friend2 = {name: "Joanthan", age: 69}
+const friend3 = {name: "Rami", age: 96}
+
+// What a lonely array. Add at least 3 friend objects to it.  
+
+friends.push(friend1,friend2,friend3);
+
+console.log(friends);          
+            </code>
+        </pre>
+            </div>
+            <p>
+                Here, an empty array named friends is provided, and you are tasked with 
+                adding three friend objects to it. The code demonstrates how to populate
+                an array with objects and use the push method for insertion.
+            </p>
+        </div>
+
+        <div class="info-container">
+            <p>
+                In this exercise, you work with an array called significantMathNumbers 
+                containing numerical values. The goal is to find the index of the number
+                1729 in the array programmatically using the indexOf method.
+            </p>
+            <div class="code-box-right">
+                <pre>
+                <code id="code-snippet">
+const significantMathNumbers = [0, 2.718, 3.14159, 1729];
+
+
+console.log(significantMathNumbers.indexOf(1729));         
+            </code>
+        </pre>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="code-box-left">
+                <pre>
+              <code id="code-snippet">
+const diet = ["tomato", "cucumber", "rocket"];
+
+diet.splice(2,0, "hamburger", "soda", "pizza")
+
+console.log(diet);         
+            </code>
+        </pre>
+            </div>
+            <p>
+                This exercise involves an array named diet containing food items. 
+                You are instructed to insert the elements "hamburger," "soda," and "pizza" 
+                between the elements "cucumber" and "rocket." The code demonstrates how to use 
+                the splice method for array manipulation.
+            </p>
+        </div>
+
+        <div class="info-container">
+            <p>
+                Here, the task is to remove the last element from the diet 
+                array without specifying its index. The pop method is used for this purpose.
+            </p>
+            <div class="code-box-right">
+                <pre>
+                <code id="code-snippet">
+diet.pop();
+
+console.log(diet);     
+            </code>
+        </pre>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="code-box-left">
+                <pre>
+              <code id="code-snippet">
+const dinnerTray = diet;
+
+console.log(dinnerTray);         
+            </code>
+        </pre>
+            </div>
+            <p>
+                In this exercise, you are asked to create a copy of the diet array and store 
+                it in a new array called dinnerTray. The code showcases how to create a shallow copy of an array.
+            </p>
+        </div>
+
+        <div class="info-container">
+            <p>
+                You are provided with an array called lettersExpanded containing characters. 
+                The objective is to log every second character in the array, starting from "b" 
+                A for loop is used to iterate through the array and achieve this.
+            </p>
+            <div class="code-box-right">
+                <pre>
+                <code id="code-snippet">
+const lettersExpanded = ["a","b","c", "d", "e", "f", "g", "h"];
+
+for (let index = 1; index < lettersExpanded.length; index+=2) {
+    console.log(lettersExpanded[index]);
+}  
+            </code>
+        </pre>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="code-box-left">
+                <pre>
+              <code id="code-snippet">
+const numbers  = [5, 3, 2, 7, 11, 12, 0, -20, 6];
+
+const discardedNumbers = [];
+
+for (let index = 0; index < numbers.length; index++) {
+    let number = numbers[index];
+    if(number < 0 || number > 6) discardedNumbers.push(number);
+    else console.log(number);
+}
+console.log(discardedNumbers);        
+            </code>
+        </pre>
+            </div>
+            <p>
+                The final exercise involves an array named numbers containing numeric values. 
+                The code uses a for loop and an if statement to log elements that are either 
+                above 6 or below 0. If a number doesn't meet these criteria, it is pushed to the discardedNumbers array.
+            </p>
+        </div>
+
     </div>
-
-        <h4 id="list-item-4">Item 4</h4>
-
-      </div>
-    </div>
-
+</div>

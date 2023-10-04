@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const loginForm = document.querySelector("#login-form");
   const messageDiv = document.getElementById('message');
 
+
   loginForm.addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then((data) => {
           if (data.message === 'Login successful') {
               messageDiv.textContent = 'Login successful. Redirecting...';
-              localStorage.setItem("isLoggedIn", true)
+              localStorage.setItem("isLoggedIn", true);
               document.getElementById("login-box").style.display = "none"
               document.getElementById("content-container").style.display= "block"
               setTimeout(() => {
