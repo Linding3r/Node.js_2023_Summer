@@ -6,7 +6,7 @@ export const frontpagePage = renderPage(frontpage, {
     activePage: 'frontpage'
 })
 
-const nodejs = readPage('./public/pages/nodejs/nodejs.html');
+const nodejs = readPage('./public/pages/nodejs/nodeJs.html');
 export const nodejsPage = renderPage(nodejs, {
     tabTitle: 'Node.js',
     activePage: 'node'
