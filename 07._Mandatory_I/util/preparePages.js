@@ -37,14 +37,14 @@ export const adminPage = renderPage(admin, {
     activePage: 'admin'
 });
 
-const server = readPage('./public/pages/serverPage/serverPage.html');
-export const serverPage = renderPage(server, {
-    tabTitle: 'Server',
-    activePage: 'server'
-});
-
 const node = readPage('./public/pages/node/node.html');
 export const nodePage = renderPage(node, {
     tabTitle: 'Node',
     activePage: 'node'
+});
+
+const misc = readPage('./public/pages/miscellaneous/miscellaneous.html');
+export const miscPage = renderPage(misc, {
+    tabTitle: 'Miscelleneous',
+    activePage: 'misc'
 });

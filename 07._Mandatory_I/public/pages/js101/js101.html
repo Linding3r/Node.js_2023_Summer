@@ -6,6 +6,7 @@
     <a class="list-group-item list-group-item-action" href="#list-item-2">2. Numbers and Strings</a>
     <a class="list-group-item list-group-item-action" href="#list-item-3">3. Objects</a>
     <a class="list-group-item list-group-item-action" href="#list-item-4">4. Arrays</a>
+    <a class="list-group-item list-group-item-action" href="#list-item-5">5. Loops</a>
 </div>
 <div class="info-container">
     <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" tabindex="0">
@@ -409,6 +410,79 @@ console.log(discardedNumbers);
                 above 6 or below 0. If a number doesn't meet these criteria, it is pushed to the discardedNumbers array.
             </p>
         </div>
+
+        <h4 id="list-item-5">5. Loops</h4>
+        <div class="info-container">
+<p>This code snippet introduces key concepts related to loop methods like map and filter, as well as the concept of currying in functional programming. Let's briefly delve into each part:</p>
+</div>
+<div class="info-container">
+<p>
+    You are provided with an array called lettersExpanded containing characters. 
+    The objective is to log every second character in the array, starting from "b" 
+    A for loop is used to iterate through the array and achieve this.
+</p>
+</div>
+    <div class="code-box-centert">
+        <ul>
+            <li>The code begins by defining an array of trolls, each represented as an object with a name and troll level.</li>
+            <li>Task 1 involves adding 5 to the troll level of all trolls using the map method. This method creates a new list 
+                (upgradedTrolls) with the updated troll levels, leaving the original trolls array unchanged.</li>
+        </ul>
+        <pre>
+        <code id="code-snippet">
+const trolls = [
+    { name: 'anonymous', trollLevel: 8 },
+    { name: 'kroolleboolle', trollLevel: 22 },
+    { name: 'Jonathan', trollLevel: 69 },
+    { name: 'krolleline', trollLevel: 26 },
+];
+
+//task 1:
+
+const upgradedTrolls = trolls.map(troll => {
+    troll.trollLevel += 5;
+    return troll;
+});
+    </code>
+</pre>
+    </div>
+
+    <div class="code-box-centert">
+            <p>Additionally, another one-liner is demonstrated to create a new list of trolls with their troll levels increased by 5 (doubleUpgradedTrolls).</p>
+        <pre>
+        <code id="code-snippet">
+const upgradedTrolls = trolls.map(troll => ((troll.trollLevel += 5), troll));
+    </code>
+</pre>
+    </div>
+
+
+    <div class="code-box-center">
+        <p>The code highlights functional programming concepts like pure functions and immutability by emphasizing that when using map, you typically don't modify the original list.
+            To create a new object in the map method, an additional set of parentheses is used to ensure that the returned value is an object and not a function.</p>
+
+            <pre>
+    <code id="code-snippet">
+const upgradedTrolls = trolls.map(troll => ((troll.trollLevel += 5), troll));
+    </code>
+    </pre>
+</div>
+
+<div class="code-box-center">
+    <p>Task 2 involves creating a new list (oddNumberTrolls) of trolls where the troll level is an 
+        odd number using the filter method.
+        A one-liner for this task is provided as a more concise alternative to the previous multi-line solution.</p>
+        <pre>
+<code id="code-snippet">
+/*const oddNumberTrolls = doubleUpgradedTrolls.filter(troll => {
+    if (troll.trollLevel % 2 !== 0) return troll;
+});*/
+
+const oddNumberTrolls = doubleUpgradedTrolls.filter((troll) => troll.trollLevel % 2 !== 0);
+</code>
+</pre>
+</div>
+
 
     </div>
 </div>

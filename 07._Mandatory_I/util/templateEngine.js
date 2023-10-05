@@ -16,8 +16,8 @@ export function renderPage(page, config = {}) {
         .replace('$ACTIVE_PAGE_express', config.activePage === 'express' ? 'active' : '')
         .replace('$ACTIVE_PAGE_admin', config.activePage === 'admin' ? 'active' : '')
         .replace('$ACTIVE_PAGE_login', config.activePage === 'login' ? 'active' : '')
-        .replace('$ACTIVE_PAGE_server', config.activePage === 'server' ? 'active' : '')
         .replace('$ACTIVE_PAGE_node', config.activePage === 'node' ? 'active' : '')
+        .replace('$ACTIVE_PAGE_misc', config.activePage === 'misc' ? 'active' : '')
     const footer = fs.readFileSync('./public/components/footer/footer.html').toString();
 
     return navbar + page + footer;

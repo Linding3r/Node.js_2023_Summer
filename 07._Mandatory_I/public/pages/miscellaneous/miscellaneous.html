@@ -1,0 +1,160 @@
+<div id="banner">
+    <h1 class="banner-text">Miscellaneaus</h1>
+</div>
+<div id="list-example" class="list-group" data-bs-theme="dark">
+    <a class="list-group-item list-group-item-action" href="#list-item-1">Anatomy of an URL</a>
+    <a class="list-group-item list-group-item-action" href="#list-item-2">Git 101</a>
+    <a class="list-group-item list-group-item-action" href="#list-item-3">REST API Conventions</a>
+</div>
+<div class="info-container-large">
+    <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" tabindex="0">
+    <p>Here, I've gathered a diverse array of topics that don't neatly fit into previously categorized sections like Node.js,
+         Express.js, Projects, or JavaScript. Think of this section as a treasure trove of knowledge covering various subjects 
+         essential to the world of development and beyond. In this eclectic collection, you'll find information on everything 
+         from unraveling the intricacies of URL anatomy, mastering essential Git commands, to crafting elegant REST API designs. 
+         These topics may not share a common theme, but they are all essential pieces of the puzzle that make up a well-rounded developer's toolkit.</p>
+
+    <h3 id="list-item-1" class="h4-center"style="margin-top: 100px;">Anatomy of an URL</h3>
+
+    <div class="code-box-center">
+        <pre>
+    <code id="code-snippet">        
+https://www.google.com/search?client=firefox-b-d&q=test
+
+protocol    subdomain    domain    tld(top-level domain)    endpoint       query String      
+https://    www.         google           .com              /search     ?client=firefox-b-d&=test
+        
+</code>
+</pre>
+    </div>
+    <ul>
+        <li><strong>Protocol:</strong> It specifies how the web browser should communicate with the web server. In this case, it's "https://" which stands for Hypertext Transfer Protocol Secure, indicating a secure, encrypted connection.</li>
+        <br>
+        <li><strong>Subdomain:</strong> "www" is a commonly used subdomain and typically represents the World Wide Web.</li>
+        <br>
+        <li><strong>Domain:</strong> "google" is the main domain name, indicating the specific website you're trying to access.</li>
+        <br>
+        <li><strong>TLD (Top-Level Domain):</strong> ".com" is a TLD, which often signifies that it's a commercial website.</li>
+        <br>
+        <li><strong>Endpoint:</strong> "/search" is the path or location on the web server where the specific resource or page is located.</li>
+        <br>
+        <li><strong>Query String:</strong> This part starts with "?" and includes parameters like "client=firefox-b-d" and "=test." These parameters are often used to pass information to the web server for various purposes, such as performing a search ("test" in this case) or customizing the user experience based on the client (Firefox in this case).</li>
+    </ul>
+
+    <h3 id="list-item-2" class="h4-center"style="margin-top: 100px;">Git 101</h3>
+    <p>Git is a version control system that tracks changes in your files, allowing you to collaborate with others, 
+        keep a history of your work, and manage different project versions through branches. It's essential for 
+        software development and any text-based file management. Here is a list of some of the main git commands used:</p>
+
+        <div class="code-box-center" style="margin-top: 100px;">
+            <p>Initialize a new Git repository in the current directory.</p>
+            <pre>
+                <code id="code-snippet">
+git init
+                </code>
+            </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton2"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+    
+        <div class="code-box-center">
+            <p>Create a copy of a remote repository on your local machine.</p>
+            <pre>
+                <code id="code-snippet">
+git clone &lt;repository_url&gt;
+                </code>
+            </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton2"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+
+        <div class="code-box-center">
+            <p>Stage changes for commit.</p>
+            <pre>
+                <code id="code-snippet">
+git add &lt;file_name&gt;
+                </code>
+            </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton2"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+    
+        <div class="code-box-center">
+            <p>Commit your staged changes with a descriptive message.</p>
+            <pre>
+                <code id="code-snippet">
+git commit -m "Your commit message"
+                </code>
+            </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton2"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+    
+        <div class="code-box-center">
+            <p>Fetch and merge changes from a remote repository into your local branch.</p>
+            <pre>
+                <code id="code-snippet">
+git pull
+                </code>
+            </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton2"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+    
+        <div class="code-box-center">
+            <p>Push your local commits to a remote repository.</p>
+            <pre>
+                <code id="code-snippet">
+git push
+                </code>
+            </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton2"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+    
+        <div class="code-box-center">
+            <p>List all branches in your repository.</p>
+            <pre>
+                <code id="code-snippet">
+git branch
+                </code>
+            </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton2"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+    
+        <div class="code-box-center">
+            <p>Switch to a different branch or commit.</p>
+            <pre>
+                <code id="code-snippet">
+git checkout &lt;branch_name or commit_hash&gt;
+                </code>
+            </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton2"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+    
+        <div class="code-box-center">
+            <p>Merge changes from one branch into the current branch.</p>
+            <pre>
+                <code id="code-snippet">
+git merge &lt;branch_name&gt;
+                </code>
+            </pre>
+            <button class="btn btn-secondary copy-button" id="copyButton2"><img class="icon" src="../../assets/img/copy.png" /></button>
+        </div>
+
+    <h3 id="list-item-3" class="h4-center"style="margin-top: 100px;"> REST API Conventions:</h3>
+
+    <ul>
+        <li><strong>Use Nouns for Resource Names:</strong> Resource URIs should use nouns to represent resources, not verbs. For example, /users is a better URI than /getUsers.</li>
+        <br>
+        <li><strong>Use Plural Nouns:</strong> Resource names should be plural nouns to indicate collections. For example, /users represents a collection of user resources.</li>
+        <br>
+        <li><strong>Use HTTP Methods Appropriately:</strong></li>
+        <br>
+            <ul>
+                <li><strong>GET:</strong> Retrieve data from a resource.</li>
+                <li><strong>POST:</strong> Create a new resource.</li>
+                <li><strong>PUT:</strong> Update an existing resource.</li>
+                <li><strong>DELETE:</strong> Remove a resource.</li>
+                <li>Use other HTTP methods when appropriate (e.g., PATCH for partial updates).</li>
+            </ul>
+            <br>
+        <li><strong>Use Status Codes:</strong> Return appropriate HTTP status codes (e.g., 200 OK, 201 Created, 404 Not Found) to indicate the outcome of API requests. These codes provide valuable information to clients.</li>
+    </ul>
+    <p>If you wish to see an example of a REST enpoint using Express.js <a href="/express">Click Here</a></p>
+</div>
+</div>

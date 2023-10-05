@@ -13,7 +13,7 @@ app.use(
     })
   );
 
-import { adminPage, frontpagePage, expressPage, js101Page, loginPage, projectsPage, serverPage, nodePage } from "./util/preparePages.js";
+import { adminPage, frontpagePage, expressPage, js101Page, loginPage, projectsPage, nodePage, miscPage } from "./util/preparePages.js";
 
 
 const USERNAME = "admin";
@@ -47,12 +47,12 @@ app.get("/projects", (req, res) => {
   res.send(projectsPage)
 });
 
-app.get("/server", (req, res) => {
-  res.send(serverPage);
-});
-
 app.get("/node", (req, res) => {
   res.send(nodePage);
+});
+
+app.get("/misc", (req, res) => {
+  res.send(miscPage);
 });
 
 app.get("/login", (req, res) => {
