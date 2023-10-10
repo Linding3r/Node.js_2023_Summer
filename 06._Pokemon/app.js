@@ -63,6 +63,11 @@ app.get('/battlepokemon', (req, res) => {
     }
 });
 
+
+app.post('/contact', (req, res) => {
+    res.send({data: 'OK Thanks for the message'});
+});
+
 const PORT = Number(process.env.PORT) || 8080;
 
 app.listen(PORT, () => {
