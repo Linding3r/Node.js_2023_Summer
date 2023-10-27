@@ -1,10 +1,38 @@
 <script>
-
+  import { Router, Route, Link } from "svelte-navigator";
+  import Login from "./component/Login/Login.svelte"
 </script>
 
-<main>
+<Router>
+  <header>
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="about">About</Link>
+      <Link to="login">Login</Link>
+    </nav>
+  </header>
 
-</main>
+  <main>
+    <Route path="/">
+      <h3>Home</h3>
+      <p>Home sweet home...</p>
+    </Route>
+
+    <Route path="about">
+      <h3>About</h3>
+      <p>That's what it's all about!</p>
+    </Route>
+
+    <Route path="login">
+      <Login/>
+    </Route>
+
+    <Route>
+      <h3>404</h3>
+      <p>Error 404</p>
+    </Route>
+  </main>
+</Router>
 
 <style>
   .logo {

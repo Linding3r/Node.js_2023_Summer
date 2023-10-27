@@ -10,7 +10,14 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
-    "svelte": "^4.0.5",
+    "svelte": "^3.59.2",
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "@picocss/pico": "^1.5.10",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "svelte-french-toast": "^1.2.0",
+    "svelte-navigator": "^3.2.2"
   }
 }
