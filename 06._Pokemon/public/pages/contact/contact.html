@@ -1,14 +1,14 @@
 
         <h1>Contact</h1>
 
-        <form action="/contact" methode="POST">
+        <form id="contact-form" action="/contact" method="post">
                 <label>Your Name</label>
-                <input placeholder="Your name">
+                <input placeholder="Your name" name="name">
 
                 <label>Your Email</label>
-                <input type="email" placeholder="Your email">  
+                <input type="email" placeholder="Your email" name="email">  
 
                 <label>Message</label>
-                <textarea placeholder="Message"></textarea>
+                <textarea placeholder="Enter your message..." name="message"></textarea>
                 <button>Submit</button>
         </form>

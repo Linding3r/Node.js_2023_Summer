@@ -1,12 +1,14 @@
 //const express = require('express');
 
 //this is now possible due to us adding type: "module"  in the package.json
-import express from 'express';
+import express , {urlencoded} from 'express';
 import { randomInFromInterval } from './util/randomUtil.js';
 
 const app = express();
 
 app.use(express.static('public'));
+app.use(urlencoded({ extended: true }));
+
 
 //with module we can't use __dirname, one of the trade offs of using modules instead of common JS
 // instead we import path from path and use path.resolve
@@ -65,7 +67,8 @@ app.get('/battlepokemon', (req, res) => {
 
 
 app.post('/contact', (req, res) => {
-    res.send({data: 'OK Thanks for the message'});
+    console.log('Ok thanks for the message', req.body);
+    res.redirect('/');
 });
 
 const PORT = Number(process.env.PORT) || 8080;
