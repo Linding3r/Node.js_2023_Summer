@@ -1,7 +1,7 @@
 import { Router } from 'express';
 const router = Router();
 
-const USERNAME = "admin";
+const EMAIL = "admin@test.com";
 const PASSWORD = "1234"
 
 
@@ -15,7 +15,7 @@ router.get('/checkAuth', (req, res) => {
 
 
 router.post("/auth/login", (req, res) => {
-    if (req.body.username === USERNAME && req.body.password === PASSWORD) {
+    if (req.body.email === EMAIL && req.body.password === PASSWORD) {
       req.session.isAuthenticated = true;
       res.status(200).json({ message: "Login successful" });
     } else {

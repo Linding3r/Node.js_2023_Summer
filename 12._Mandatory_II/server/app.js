@@ -4,6 +4,9 @@ config();
 import express from 'express';
 const app = express();
 
+import cors from 'cors'
+app.use(cors());
+
 import helmet from 'helmet';
 app.use(helmet());
 
@@ -32,7 +35,7 @@ app.use(allRoutesLimiter);
 
 const authRateLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    limit: 5,
+    limit: 100,
     standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
   });
@@ -41,6 +44,9 @@ app.use('/auth', authRateLimiter);
 
 import authRouters from './routers/authRouters.js'
 app.use(authRouters);
+
+import signupRouters from './routers/signupRouters.js'
+app.use(signupRouters)
 
 import nodemailerRouters from './routers/nodemailerRouters.js'
 app.use(nodemailerRouters)

@@ -1,7 +1,7 @@
 <script>
   import Home from "./pages/Home/Home.svelte";
   import Admin from "./pages/Admin/Admin.svelte";
-  import Login from "./pages/Login/Login.svelte";
+  import LoginSignup from "./pages/LoginSignup/LoginSignup.svelte";
   import { onMount } from 'svelte';
   import toast, { Toaster } from 'svelte-french-toast';
   import { Router, Link, Route } from "svelte-routing";
@@ -25,7 +25,7 @@
 
   <main>
     <Route path="/" component={Home}></Route>
-    <Route path="/login"><Login /></Route>
+    <Route path="/login"><LoginSignup /></Route>
     <Route path="/admin"><Admin /></Route>
   </main>
 </Router>
@@ -33,7 +33,7 @@
 <style>
   .sidebar {
     height: 100vh;
-    width: 150px;
+    width: 100px;
     background-color: #304d9d;
     padding: 20px;
     position: fixed;
@@ -56,7 +56,7 @@
   }
   
   main {
-    margin-left: 250px;
+    margin-left: 100px;
     padding: 20px;
   }
 </style>

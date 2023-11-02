@@ -1,7 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import toast, { Toaster } from 'svelte-french-toast';
-    import { Router, Link, Route } from "svelte-routing";
+    import { navigate } from 'svelte-routing';
+	import { user } from '../../stores/userStore.js';
 
     let rightPanelActive = false;
   
@@ -9,27 +10,74 @@
       rightPanelActive = !rightPanelActive;
     }
     
+	let loginEmail = '';
+  	let loginPassword = '';
+	let confirmPassword = '';
+	let signupPassword = '';
+	let signupEmail = '';
+	let name ='';
 
+	async function login() {
+		const response = await fetch('http://localhost:8080/auth/login', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ loginEmail, loginPassword })
+		});
+
+		if (response.ok) {
+		const data = await response.json();
+		console.log(data)
+		user.set(data);
+		toast.success('Successfully logged in');
+
+		navigate('/admin');
+		} else {
+		toast.error('Wrong email or password');
+		}
+	}
+
+	async function signUp() {
+    if (signupPassword !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+
+    const response = await fetch('http://localhost:8080/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ signupEmail, signupPassword, name })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+	  toast.success('Successfully signed up');
+      user.set(data);
+      navigate('/login');
+    } else {
+      toast.error('Signup failed');
+    }
+  }
 
 
   </script>
   
   <div class="container" class:right-panel-active={rightPanelActive}>
     <div class="form-container sign-up-container">
-      <form action="sign-up">
+      <form on:submit|preventDefault={signUp}>
         <h1>Create Account</h1>
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input type="text" bind:value={name} placeholder="Name" />
+        <input type="email" bind:value={signupEmail} placeholder="Email" />
+        <input type="password" bind:value={signupPassword} placeholder="Password" />
+		<input type="password" bind:value={confirmPassword} placeholder="Confirm Password" />
         <button>Sign Up</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form action="sign-in">
+      <form on:submit|preventDefault={login}>
         <h1>Sign in</h1>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <a href="#">Forgot your password?</a>
+        <input type="email" bind:value={loginEmail} placeholder="Email" />
+        <input type="password" bind:value={loginPassword} placeholder="Password" />
+        <!-- <a href="#">Forgot your password?</a> -->
         <button>Sign In</button>
       </form>
     </div>
