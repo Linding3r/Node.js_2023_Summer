@@ -1,21 +1,23 @@
 import { Router } from 'express';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 const router = Router();
 
 router.post('/contact', async (req, res) => {
     const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        secure: process.env.SMTP_SECURE,
         auth: {
-            user: 'mauricio.homenick@ethereal.email',
-            pass: 'Kw8KMtXPGYFQNMYTRu',
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASSWORD,
         },
     });
 
     try {
         let info = await transporter.sendMail({
             from: '"Website Contact" <no-reply@lindinger.io>',
-            to: 'Test@Lindinger.io',
+            to: 'lindingertwitch@gmail.com',
             subject: `Contact`,
             text: 'Your website sucks',
             html: `<h1>Lindinger you suck!</h1>`,

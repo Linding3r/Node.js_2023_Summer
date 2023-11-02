@@ -2,14 +2,30 @@
   import Home from "./pages/Home/Home.svelte";
   import Admin from "./pages/Admin/Admin.svelte";
   import LoginSignup from "./pages/LoginSignup/LoginSignup.svelte";
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import toast, { Toaster } from 'svelte-french-toast';
   import { Router, Link, Route } from "svelte-routing";
+  import PrivateRoute from "./component/PrivateRoutes/PrivateRoute.svelte";
+  import { user } from './stores/userStore.js';
+
+  let welcomeMessage = "Welcome to Mandatory II!";
+
+  // Subscribe to the user store
+  const unsubscribe = user.subscribe($user => {
+    if ($user && $user.name) {
+      welcomeMessage = `Welcome back ${$user.name}!`;
+    }
+  });
 
   onMount(() => {
-    toast("Welcome to Mandatory II", {
+    toast(welcomeMessage, {
       icon: '👋',
     });
+  });
+
+  // Cleanup the subscription when the component is destroyed
+  onDestroy(() => {
+    unsubscribe();
   });
 </script>
 

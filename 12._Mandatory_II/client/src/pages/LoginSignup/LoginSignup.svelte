@@ -10,18 +10,18 @@
       rightPanelActive = !rightPanelActive;
     }
     
-	let loginEmail = '';
-  	let loginPassword = '';
-	let confirmPassword = '';
-	let signupPassword = '';
-	let signupEmail = '';
-	let name ='';
+	let loginEmail;
+  	let loginPassword;
+	let confirmPassword;
+	let signupPassword;
+	let signupEmail;
+	let name;
 
 	async function login() {
 		const response = await fetch('http://localhost:8080/auth/login', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({ loginEmail, loginPassword })
+		body: JSON.stringify({ email: loginEmail, password: loginPassword })
 		});
 
 		if (response.ok) {
@@ -65,18 +65,18 @@
     <div class="form-container sign-up-container">
       <form on:submit|preventDefault={signUp}>
         <h1>Create Account</h1>
-        <input type="text" bind:value={name} placeholder="Name" />
-        <input type="email" bind:value={signupEmail} placeholder="Email" />
-        <input type="password" bind:value={signupPassword} placeholder="Password" />
-		<input type="password" bind:value={confirmPassword} placeholder="Confirm Password" />
+        <input type="text" bind:value={name} placeholder="Name" required/>
+        <input type="email" bind:value={signupEmail} placeholder="Email" required/>
+        <input type="password" bind:value={signupPassword} placeholder="Password" required />
+		<input type="password" bind:value={confirmPassword} placeholder="Confirm Password" required/>
         <button>Sign Up</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
       <form on:submit|preventDefault={login}>
         <h1>Sign in</h1>
-        <input type="email" bind:value={loginEmail} placeholder="Email" />
-        <input type="password" bind:value={loginPassword} placeholder="Password" />
+        <input type="email" bind:value={loginEmail} placeholder="Email" required />
+        <input type="password" bind:value={loginPassword} placeholder="Password" required/>
         <!-- <a href="#">Forgot your password?</a> -->
         <button>Sign In</button>
       </form>
