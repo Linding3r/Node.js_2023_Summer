@@ -1,63 +1,63 @@
 <script>
+  import Home from "./pages/Home/Home.svelte";
+  import Admin from "./pages/Admin/Admin.svelte";
+  import Login from "./pages/Login/Login.svelte";
   import { onMount } from 'svelte';
   import toast, { Toaster } from 'svelte-french-toast';
   import { Router, Link, Route } from "svelte-routing";
 
-
   onMount(() => {
-		toast.success("Welcome to Mandatory II", {
+    toast("Welcome to Mandatory II", {
       icon: '👋',
-})});
+    });
+  });
 </script>
 
+<Toaster />
+
 <Router>
-  <header>
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="about">About</Link>
-      <Link to="login">Login</Link>
-    </nav>
-  </header>
+  <nav class="sidebar">
+    <img src="/img/l_logo.png" alt="Logo" style="height: 100px; margin-bottom:40px;">
+    <Link to="/"><p>Home</p></Link>
+    <Link to="/login"><p>Login</p></Link>
+    <Link to="/admin"><p>Admin</p></Link>
+  </nav>
 
   <main>
-    <Route path="/">
-      <h3>Home</h3>
-      <p>Home sweet home...</p>
-    </Route>
-
-    <Route path="about">
-      <h3>About</h3>
-      <p>That's what it's all about!</p>
-    </Route>
-
-    <Route path="login">
-      <h1>Sign in</h1>
-      <form>
-        <input
-          type="text"
-          name="login"
-          placeholder="Login"
-          aria-label="Login"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          aria-label="Password"
-          required
-        />
-      </form>
-      <button type="submit" class="contrast">Login</button>
-    </Route>
-
-    <Route>
-      <h3>404</h3>
-      <p>Error 404</p>
-    </Route>
+    <Route path="/" component={Home}></Route>
+    <Route path="/login"><Login /></Route>
+    <Route path="/admin"><Admin /></Route>
   </main>
 </Router>
 
 <style>
-
+  .sidebar {
+    height: 100vh;
+    width: 150px;
+    background-color: #304d9d;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .sidebar p {
+    display: block;
+    padding: 15px;
+    color: #f0f0f0;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .sidebar p:hover {
+    background-color: #3857ad;
+  }
+  
+  main {
+    margin-left: 250px;
+    padding: 20px;
+  }
 </style>
+
