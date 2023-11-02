@@ -11,11 +11,12 @@
     
 
 
+
   </script>
   
   <div class="container" class:right-panel-active={rightPanelActive}>
     <div class="form-container sign-up-container">
-      <form action="#">
+      <form action="sign-up">
         <h1>Create Account</h1>
         <input type="text" placeholder="Name" />
         <input type="email" placeholder="Email" />
@@ -24,7 +25,7 @@
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form action="#">
+      <form action="sign-in">
         <h1>Sign in</h1>
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Password" />
