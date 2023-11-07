@@ -51,6 +51,9 @@ app.use(signupRouters)
 import nodemailerRouters from './routers/nodemailerRouters.js'
 app.use(nodemailerRouters)
 
+import emailRouter from './routers/emailRouter.js'
+app.use(emailRouter)
+
 app.all("*", (req, res) => {
     res.status(404).send({ data: `Unsupported path ${req.path}`})
 });

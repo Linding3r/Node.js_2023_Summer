@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
+import { config } from 'dotenv'
+config();
 const router = Router();
 
-router.post('/contact', async (req, res) => {
+router.post('/contact/nodemailer', async (req, res) => {
     const transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: process.env.SMTP_PORT,
@@ -12,10 +13,16 @@ router.post('/contact', async (req, res) => {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASSWORD,
         },
+        tls: {
+            // Do not fail on invalid certs
+            rejectUnauthorized: false,
+            secureProtocol: 'TLSv1_method',
+            ciphers: 'HIGH:!aNULL:!eNULL',
+        },
     });
 
     try {
-        let info = await transporter.sendMail({
+        await transporter.sendMail({
             from: '"Website Contact" <no-reply@lindinger.io>',
             to: 'lindingertwitch@gmail.com',
             subject: `Contact`,
