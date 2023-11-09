@@ -1,13 +1,12 @@
+import db from '../database/connection.js';
+import { checkPassword } from '../util/passwordencryption.js';
+
 import { Router } from 'express';
 const router = Router();
 
-const EMAIL = "admin@test.com";
-const PASSWORD = "1234";
-const NAME = 'Thomas';
-const isAdmin = true;
 
 
-router.get('/auth/checkAuth', (req, res) => {
+router.get('/api/auth/checkAuth', (req, res) => {
     if (req.session.isAuthenticated) {
         res.status(200).json({ isAuthenticated: true });
     } else {
@@ -16,19 +15,26 @@ router.get('/auth/checkAuth', (req, res) => {
 });
 
 
-router.post("/auth/login", (req, res) => {
-    if (req.body.email === EMAIL && req.body.password === PASSWORD) {
-      req.session.isAuthenticated = true;
-      res.status(200).json({ message: "Login successful", name: NAME , isAdmin});
+router.post("/api/auth/login", async (req, res) => {
+    const user = await db.all(`SELECT * FROM users WHERE email = ?;`, req.body.email);
+    if(user.length === 0){
+      res.status(404).json({ message: `No user found with email: ${req.body.email}`})
     } else {
-      res.status(401).json({ message: "Login failed" });
+    if (await checkPassword(req.body.password, user[0].password)) {
+      req.session.isAuthenticated = true;
+      res.status(200).json({ message: "Login successful", name: user[0].name});
+    } else {
+      res.status(401).json({ message: "Wrong password or email" });
     }
+  }
   });
 
 
-router.post('/auth/logout', (req, res) => {
+router.post('/api/auth/logout', (req, res) => {
     req.session.isAuthenticated = false;
     res.status(200).json({ message: 'Logout successful' });
 });
+
+
 
 export default router;

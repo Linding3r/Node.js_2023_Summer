@@ -4,8 +4,11 @@ config();
 import express from 'express';
 const app = express();
 
-import cors from 'cors'
-app.use(cors());
+import cors from "cors";
+app.use(cors({
+    credentials: true,
+    origin: true
+}));
 
 import helmet from 'helmet';
 app.use(helmet());
@@ -16,13 +19,12 @@ import { rateLimit } from 'express-rate-limit';
 
 app.use(express.json());
 
-app.use(
-    session({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: true,
-    })
-);
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
 const allRoutesLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -40,7 +42,7 @@ const authRateLimiter = rateLimit({
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
   });
   
-app.use('/auth', authRateLimiter);
+app.use('/api/auth', authRateLimiter);
 
 import authRouters from './routers/authRouters.js'
 app.use(authRouters);
