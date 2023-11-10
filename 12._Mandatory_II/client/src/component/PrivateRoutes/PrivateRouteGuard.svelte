@@ -6,7 +6,7 @@
     const location = useLocation();
   
     $: if ($user.isAdmin === 0) {
-      navigate("/", {
+      navigate("/no-permission", {
         state: { from: $location.pathname },
         replace: true,
       });

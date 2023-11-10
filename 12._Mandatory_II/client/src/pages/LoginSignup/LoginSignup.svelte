@@ -3,6 +3,7 @@
     import { navigate } from 'svelte-routing';
     import { user } from '../../stores/userStore.js';
     import { BASE_URL } from '../../stores/global.js';
+    import { checkAuthStatus } from '../../component/Authentication/authentication.js'
 
     let rightPanelActive = false;
 
@@ -33,8 +34,9 @@
                     }
                     return response.json();
                 })
-                .then(data => {
+                .then(async data => {
                     user.set(data);
+                    await checkAuthStatus();
                     navigate('/');
                 }),
             {

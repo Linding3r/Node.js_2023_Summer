@@ -6,31 +6,13 @@
     import Random from './pages/Random/Random.svelte';
     import { onMount } from 'svelte';
     import toast, { Toaster } from 'svelte-french-toast';
-    import { Router, Link, Route } from 'svelte-routing';
+    import { Router, Link, Route } from 'svelte-navigator';
     import PrivateRoute from './component/PrivateRoutes/PrivateRoute.svelte';
     import { user } from './stores/userStore.js';
     import { BASE_URL } from './stores/global.js';
     import LostPassword from './pages/LostPassword/LostPassword.svelte';
-
-    async function checkAuthStatus() {
-        console.log('Checking auth');
-        try {
-            const response = await fetch($BASE_URL + '/api/checkAuth', {
-                credentials: 'include',
-            });
-            const data = await response.json();
-            if (data.isAuthenticated) {
-                const userData = { name: data.name, isAdmin: data.is_admin };
-                user.set(userData);
-                localStorage.setItem('user', JSON.stringify(userData));
-            } else {
-                user.set(null);
-                localStorage.removeItem('user');
-            }
-        } catch (error) {
-            console.error('Failed to check authentication status', error);
-        }
-    }
+    import NoPermission from './pages/NoPermission/NoPermission.svelte';
+    import { checkAuthStatus } from './component/Authentication/authentication.js'
 
     async function logout() {
         try {
@@ -50,9 +32,11 @@
             toast.error('An error occurred while logging out.');
         }
     }
+    let isLoading = true;
 
     onMount(async () => {
         await checkAuthStatus();
+        isLoading = false;
         if ($user) {
             toast(`Welcome back ${$user.name}!`, { icon: '👋' });
         }
@@ -62,34 +46,41 @@
 <Toaster />
 
 <Router>
-    {#if $user}
+    {#if $user && !isLoading}
         <nav class="sidebar">
             <img src="/img/l_logo.png" alt="Logo" style="height: 100px; margin-bottom:40px;" />
             <Link to="/"><p>Home</p></Link>
             <Link to="/random"><p>Random</p></Link>
             {#if $user.isAdmin === 1}
-                <Link to="/admin"><p>Admin</p></Link>
+            <Link to="/admin"><p>Admin</p></Link>
             {/if}
-            <a on:click={logout}><p>Logout</p></a>
+            <button class="logout-button" on:click={logout}>Logout</button>
         </nav>
     {/if}
 
     <main>
-        {#if $user}
+        {#if $user && !isLoading}
             <Route path="/" component={Home} />
             <Route path="/random" component={Random} />
-            {#if $user.isAdmin === 1}
+            <Route path="/no-permission" component={NoPermission}/>
+            <!-- {#if $user.isAdmin === 1}
                 <Route path="/admin"><Admin /></Route>
-            {/if}
-        {:else}
+            {/if} -->
+            <PrivateRoute path="/admin"><Admin /></PrivateRoute>
+        {:else if !isLoading}
             <Route path="*" component={LoginSignup} />
             <Route path="/forgottenPassword" component={LostPassword} />
             <Route path="/reset-password" component={ResetPassword} />
+        {:else}
+          <img src="/img/infinite-spinner.svg" alt="Spinner"/>
         {/if}
     </main>
 </Router>
 
 <style>
+    p.loading {
+
+    }
     .sidebar {
         height: 100vh;
         width: 100px;
@@ -111,7 +102,7 @@
     }
 
     .logout-button {
-        background: none;
+        background-color: #304d9d;
         border: none;
         padding: 15px;
         color: #f0f0f0;
@@ -120,6 +111,10 @@
         border-radius: 5px;
         font-weight: bold;
         cursor: pointer;
+    }
+
+    .logout-button:hover{
+      background-color: #3857ad;
     }
 
     .sidebar p:hover {
