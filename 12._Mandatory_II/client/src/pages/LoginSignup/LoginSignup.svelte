@@ -1,6 +1,6 @@
 <script>
     import toast from 'svelte-french-toast';
-    import { navigate } from 'svelte-routing';
+    import { navigate } from 'svelte-navigator';
     import { user } from '../../stores/userStore.js';
     import { BASE_URL } from '../../stores/global.js';
     import { checkAuthStatus } from '../../component/Authentication/authentication.js'
@@ -91,7 +91,7 @@
 <div class="container" class:right-panel-active={rightPanelActive}>
     <div class="form-container sign-up-container">
         <form on:submit|preventDefault={signUp}>
-            <h1 style="margin-bottom: 20px">Create Account</h1>
+            <h1>Create Account</h1>
             <input type="text" bind:value={name} placeholder="Name" required />
             <input type="email" bind:value={signupEmail} placeholder="Email" required />
             <input type="password" bind:value={signupPassword} placeholder="Password" required />
@@ -100,11 +100,11 @@
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form on:submit|preventDefault={login}>
+        <form class="signin-form" on:submit|preventDefault={login}>
             <h1 style="margin-bottom: 20px">Sign in</h1>
             <input type="email" bind:value={loginEmail} placeholder="Email" required />
             <input type="password" bind:value={loginPassword} placeholder="Password" required />
-            <button style="margin-top: 15px;">Sign In</button>
+            <button style="margin-top: 20px;">Sign In</button>
             <a href="/forgottenPassword">Forgot your password?</a>
         </form>
     </div>
@@ -145,9 +145,6 @@
     }
 
     a {
-        color: #333;
-        font-size: 14px;
-        text-decoration: none;
         margin-top: 30px;
     }
 
@@ -186,6 +183,10 @@
         padding: 0 50px;
         height: 100%;
         text-align: center;
+    }
+
+    .signin-form {
+        margin-top: 25px;
     }
 
     input {

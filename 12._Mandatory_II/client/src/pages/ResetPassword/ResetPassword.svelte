@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import { navigate } from 'svelte-routing';
+    import { navigate } from 'svelte-navigator';
     import toast, { Toaster } from 'svelte-french-toast';
     import { BASE_URL } from '../../stores/global.js';
 
@@ -32,14 +32,16 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ token, newPassword }),
             })
-                .then(response => {
+                .then(async response => {
                     if (!response.ok) {
-                        return response.json().then(data => Promise.reject(data.message));
+                        const data = await response.json();
+                        return await Promise.reject(data.message);
                     }
+                    
                     return response.json();
                 })
                 .then(data => {
-                    navigate('/login');
+                    navigate('/');
                     return data.message || 'Password successfully reset.';
                 }),
             {
@@ -58,6 +60,7 @@
             <input type="password" bind:value={newPassword} placeholder="New Password" required />
             <input type="password" bind:value={confirmPassword} placeholder="Confirm New Password" required />
             <button style="margin-top: 20px;">Reset Password</button>
+            <a href="/">Go to Sign In</a>
         </form>
     </div>
 </div>
@@ -65,7 +68,6 @@
 <Toaster />
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
     * {
         box-sizing: border-box;
@@ -75,6 +77,10 @@
         font-weight: bold;
         margin: 0;
         color: #333;
+    }
+
+    a {
+        margin-top: 20px;
     }
 
     button {

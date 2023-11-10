@@ -1,53 +1,51 @@
 <script>
     import toast, { Toaster } from 'svelte-french-toast';
-    import { navigate } from 'svelte-routing';
+    import { navigate } from 'svelte-navigator';
     import { BASE_URL } from '../../stores/global.js';
-  
+
     let registeredEmail;
-  
+
     async function requestNewPassword() {
-      toast.promise(
-        fetch(`${$BASE_URL}/api/auth/request-password-reset`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: registeredEmail }),
-        })
-        .then(response => {
-          if (!response.ok) {
-            return response.json().then(data => Promise.reject(data.message));
-          }
-          return response.json();
-        })
-        .then(() => {
-          registeredEmail = '';
-          navigate('/');
-          return 'Reset link sent! Please check your email.';
-        }),
-        {
-          loading: 'Sending reset link...',
-          success: 'Reset Link Sent Successfully!',
-          error: err => err || 'Error sending reset link',
-        }
-      );
+        toast.promise(
+            fetch(`${$BASE_URL}/api/auth/request-password-reset`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: registeredEmail }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => Promise.reject(data.message));
+                    }
+                    return response.json();
+                })
+                .then(() => {
+                    registeredEmail = '';
+                    navigate('/');
+                    return 'Reset link sent! Please check your email.';
+                }),
+            {
+                loading: 'Sending reset link...',
+                success: 'Reset Link Sent Successfully!',
+                error: err => err || 'Error sending reset link',
+            }
+        );
     }
-  </script>
-  
-  <Toaster />
-  
-  <div class="container">
+</script>
+
+<Toaster />
+
+<div class="container">
     <div class="form-container sign-in-container">
-      <form on:submit|preventDefault={requestNewPassword}>
-        <h1 style="margin-bottom: 20px">Request New Password</h1>
-        <input type="email" bind:value={registeredEmail} placeholder="Email" required />
-        <button style="margin-top: 15px;">Request Reset Link</button>
-        <a href="/login">Back to Sign In</a>
-      </form>
+        <form on:submit|preventDefault={requestNewPassword}>
+            <h1 style="margin-bottom: 20px">Request New Password</h1>
+            <input type="email" bind:value={registeredEmail} placeholder="Email" required />
+            <button style="margin-top: 15px;">Request Reset Link</button>
+            <a href="/">Back to Sign In</a>
+        </form>
     </div>
-  </div>
+</div>
 
-
-  <style>
-
+<style>
     * {
         box-sizing: border-box;
     }
@@ -55,14 +53,10 @@
     h1 {
         font-weight: bold;
         margin: 0;
-        color: #333
-    }
-
-    a {
         color: #333;
-        font-size: 14px;
-        text-decoration: none;
-        margin-top: 30px;
+    }
+    a {
+        margin-top: 20px;
     }
 
     button {
@@ -75,7 +69,7 @@
         padding: 12px 45px;
         letter-spacing: 1px;
         text-transform: uppercase;
-        width: 60%
+        width: 60%;
     }
 
     button:active {
@@ -124,6 +118,4 @@
         height: 100%;
         transition: all 0.6s ease-in-out;
     }
-
-    
 </style>

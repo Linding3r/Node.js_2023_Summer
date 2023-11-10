@@ -12,7 +12,7 @@
     import { BASE_URL } from './stores/global.js';
     import LostPassword from './pages/LostPassword/LostPassword.svelte';
     import NoPermission from './pages/NoPermission/NoPermission.svelte';
-    import { checkAuthStatus } from './component/Authentication/authentication.js'
+    import { checkAuthStatus } from './component/Authentication/authentication.js';
 
     async function logout() {
         try {
@@ -52,7 +52,7 @@
             <Link to="/"><p>Home</p></Link>
             <Link to="/random"><p>Random</p></Link>
             {#if $user.isAdmin === 1}
-            <Link to="/admin"><p>Admin</p></Link>
+                <Link to="/admin"><p>Admin</p></Link>
             {/if}
             <button class="logout-button" on:click={logout}>Logout</button>
         </nav>
@@ -62,25 +62,19 @@
         {#if $user && !isLoading}
             <Route path="/" component={Home} />
             <Route path="/random" component={Random} />
-            <Route path="/no-permission" component={NoPermission}/>
-            <!-- {#if $user.isAdmin === 1}
-                <Route path="/admin"><Admin /></Route>
-            {/if} -->
+            <Route path="/no-permission" component={NoPermission} />
             <PrivateRoute path="/admin"><Admin /></PrivateRoute>
         {:else if !isLoading}
             <Route path="*" component={LoginSignup} />
             <Route path="/forgottenPassword" component={LostPassword} />
             <Route path="/reset-password" component={ResetPassword} />
         {:else}
-          <img src="/img/infinite-spinner.svg" alt="Spinner"/>
+            <img src="/img/infinite-spinner.svg" style="width:100px height=100px" alt="Spinner" />
         {/if}
     </main>
 </Router>
 
 <style>
-    p.loading {
-
-    }
     .sidebar {
         height: 100vh;
         width: 100px;
@@ -113,8 +107,8 @@
         cursor: pointer;
     }
 
-    .logout-button:hover{
-      background-color: #3857ad;
+    .logout-button:hover {
+        background-color: #3857ad;
     }
 
     .sidebar p:hover {

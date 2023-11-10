@@ -45,8 +45,8 @@ const allRoutesLimiter = rateLimit({
 app.use(allRoutesLimiter);
 
 const authRateLimiter = rateLimit({
-    windowMs: 5 * 60 * 1000, // 10 minutes
-    limit: 100,
+    windowMs: 5 * 60 * 1000, 
+    limit: 10,
     standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
   });
