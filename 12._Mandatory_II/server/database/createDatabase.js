@@ -13,7 +13,9 @@ await db.exec(`CREATE TABLE IF NOT EXISTS users(
     name TEXT NOT NULL,
     email TEXT NOT NULL,
     password TEXT NOT NULL,
-    is_admin BOOLEAN DEFAULT 0
+    is_admin INTEGER DEFAULT 0,
+    reset_password_token TEXT DEFAULT NULL,
+    reset_password_expires INTEGER DEFAULT NULL
 );`);
 
 if(isDeleteMode){

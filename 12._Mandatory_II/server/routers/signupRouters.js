@@ -18,7 +18,6 @@ router.post('/api/auth/signup', async (req, res) => {
     } else {
     if (user) {
         const result = await db.run(`INSERT INTO users (email, name, password) VALUES (?,?,?);`, [email, name, await passwordHasher(password)])
-        console.log(result);
         if(result){
             res.status(200).json({ message: 'Signup succefull' })
         } else {

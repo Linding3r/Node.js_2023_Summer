@@ -1,8 +1,8 @@
 <script>
-    import toast, { Toaster } from 'svelte-french-toast';
+    import toast from 'svelte-french-toast';
     import { navigate } from 'svelte-routing';
     import { user } from '../../stores/userStore.js';
-	import { BASE_URL } from '../../stores/global.js'
+    import { BASE_URL } from '../../stores/global.js';
 
     let rightPanelActive = false;
 
@@ -18,19 +18,38 @@
     let name;
 
     async function login() {
-        const response = await fetch($BASE_URL + '/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: loginEmail, password: loginPassword }),
-        });
-        const data = await response.json();
-        if (response.ok) {
-            user.set(data);
-            toast.success('Successfully logged in');
-            navigate('/admin');
-        } else {
-            toast.error(data.message);
-        }
+        toast.promise(
+            fetch($BASE_URL + '/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: loginEmail, password: loginPassword }),
+            })
+                .then(response => {
+                    if (response.status === 429) {
+                        toast.error('Too many requests. Please try again later.');
+                    }
+                    if (!response.ok) {
+                        return response.json().then(data => Promise.reject(data.message));
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    user.set(data);
+                    navigate('/');
+                }),
+            {
+                loading: 'Logging in...',
+                success: 'Successfully logged in',
+                error: err => err || 'Could not login',
+            }
+        );
+    }
+
+    function clearSignUp() {
+        name = '';
+        signupEmail = '';
+        signupPassword = '';
+        confirmPassword = '';
     }
 
     async function signUp() {
@@ -39,49 +58,52 @@
             return;
         }
 
-        function clearSignUp() {
-            name = '';
-            signupEmail = '';
-            signupPassword = '';
-            confirmPassword = '';
-        }
-
-        const response = await fetch($BASE_URL + '/api/auth/signup', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: signupEmail, password: signupPassword, name: name }),
-        });
-        const data = await response.json();
-        if (response.ok) {
-            toast.success('Successfully signed up');
-            toast('Please login with your credentials to continue');
-            togglePanel();
-            clearSignUp();
-            navigate('/login');
-        } else {
-            toast.error(data.message);
-        }
+        toast.promise(
+            fetch($BASE_URL + '/api/auth/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: signupEmail, password: signupPassword, name: name }),
+            })
+                .then(response => {
+                    if (response.status === 429) {
+                        return response.json().then(data => Promise.reject('Too many requests. Please try again later.'));
+                    }
+                    if (!response.ok) {
+                        return response.json().then(data => Promise.reject(data.message));
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    togglePanel();
+                    clearSignUp();
+                }),
+            {
+                loading: 'Signing up...',
+                success: 'Successfully signed up. Please login with your credentials',
+                error: err => err || 'Could not sign up',
+            }
+        );
     }
 </script>
 
 <div class="container" class:right-panel-active={rightPanelActive}>
     <div class="form-container sign-up-container">
         <form on:submit|preventDefault={signUp}>
-            <h1>Create Account</h1>
+            <h1 style="margin-bottom: 20px">Create Account</h1>
             <input type="text" bind:value={name} placeholder="Name" required />
             <input type="email" bind:value={signupEmail} placeholder="Email" required />
             <input type="password" bind:value={signupPassword} placeholder="Password" required />
             <input type="password" bind:value={confirmPassword} placeholder="Confirm Password" required />
-            <button>Sign Up</button>
+            <button style="margin-top: 20px;">Sign Up</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
         <form on:submit|preventDefault={login}>
-            <h1>Sign in</h1>
+            <h1 style="margin-bottom: 20px">Sign in</h1>
             <input type="email" bind:value={loginEmail} placeholder="Email" required />
             <input type="password" bind:value={loginPassword} placeholder="Password" required />
-            <!-- <a href="#">Forgot your password?</a> -->
-            <button>Sign In</button>
+            <button style="margin-top: 15px;">Sign In</button>
+            <a href="/forgottenPassword">Forgot your password?</a>
         </form>
     </div>
     <div class="overlay-container">
@@ -101,7 +123,7 @@
 </div>
 
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
 
     * {
         box-sizing: border-box;
@@ -120,15 +142,11 @@
         margin: 20px 0 30px;
     }
 
-    span {
-        font-size: 12px;
-    }
-
     a {
         color: #333;
         font-size: 14px;
         text-decoration: none;
-        margin: 15px 0;
+        margin-top: 30px;
     }
 
     button {
@@ -186,6 +204,7 @@
         width: 768px;
         max-width: 100%;
         min-height: 480px;
+        margin-left: -50px;
     }
 
     .form-container {
