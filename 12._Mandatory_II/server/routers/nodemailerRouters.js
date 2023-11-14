@@ -18,7 +18,7 @@ router.post('/api/auth/request-password-reset', async (req, res) => {
         const resetToken = crypto.randomBytes(20).toString('hex');
         const expireTime = Date.now() + 3600000;
 
-        const result = await db.run(`UPDATE users SET reset_password_token = ?, reset_password_expires = ? WHERE email = ?`, [resetToken, expireTime, email]);
+        await db.run(`UPDATE users SET reset_password_token = ?, reset_password_expires = ? WHERE email = ?`, [resetToken, expireTime, email]);
 
         const resetLink = `http://localhost:8080/reset-password?token=${resetToken}`;
         const transporter = nodemailer.createTransport({

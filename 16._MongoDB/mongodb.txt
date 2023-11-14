@@ -1,0 +1,35 @@
+MySQL            vs.             MongoDB
+database                        database
+table                           collection
+row                             json 
+column                          key
+cell                            value
+
+
+// MongoDB how to have foreign keys
+
+Solution 1: 
+Have a key in the object in collection 1 and have that key be unique identifier to a document in collection 2
+
+Solution 2:
+Denormalize; deeply nested objects
+Dublicate code is okay in MongoDB
+
+
+
+
+To run on mac with path to data folder
+./mongod --dbpath /data
+
+
+
+SHOW DATABSES                   show dbs
+CREATE <database_name>          use <database_name>
+CREATE TABLE <table_name>       db.createCollection(<colection_name>)
+
+
+CRUD
+INSERT INTO <table_name>        db.<collection_name>.insert(<object>)   insertOne, insertMany
+SELECT * FROM <table_name>      db.<collection_name>.find()             find, findOne (<serach_criteria>)
+UPDATE <table_name>             updateOne, updateMany (<serach_criteria>, {$set: {<update_object>})  
+DELETE FROM <table_name>        deleteOne, deleteMany
