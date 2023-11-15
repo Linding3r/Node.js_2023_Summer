@@ -65,9 +65,6 @@ app.use(signupRouters)
 import nodemailerRouters from './routers/nodemailerRouters.js'
 app.use(nodemailerRouters)
 
-import emailRouter from './routers/emailRouter.js'
-app.use(emailRouter)
-
 app.get("*", (req, res) => {
     res.sendFile(path.resolve("../client/dist/index.html"))
 })
